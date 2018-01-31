@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!--Let browser know website is optimized for mobile-->
+        <base href="/" />
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+        <title>CNY</title>
+
+        <!-- FONT -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.css">
+        <link rel="stylesheet" href="assets/css/style.css"> <!-- custom styles -->
+
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="/node_modules/angular/angular.min.js"></script>
+        <script src="/node_modules/angular-route/angular-route.min.js"></script>
+        <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
+        <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
+        <script src="/node_modules/materialize-css/dist/js/materialize.js"></script>
+
+
+
+        <!-- CONTROLLERS -->
+        <script src="modules/home/controller/homeCtrl.js"></script>
+        <script src="modules/trail/controller/trailCtrl.js"></script>
+
+        <!-- SERVICES 
+        <script src="modules/login/service/loginService.js"></script>
+        <script src="modules/real-time/service/real-timeService.js"></script>
+        <script src="modules/historical/service/historicalService.js"></script>
+        <script src="modules/system-monitoring/service/system-monitoringService.js"></script>
+        <script src="modules/attendance/service/attendanceService.js"></script>-->
+
+        <!-- APP 
+        <script src="app.configurations.js"></script>-->
+        <script src="app_routes.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body id="body_content" ng-app="ChineseBiz" style="overflow-x: hidden">
+
+        <nav id="navbar" class="red darken-4 z-depth-0">
+            <div class="nav-wrapper">
+                <div class="row">
+                    <div class="col s12">
+                        <a href="" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+                        <a href="/home" class="brand-logo">CNY</a>
+                        <!--<ul class="right hide-on-med-and-down">
+                            <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Real Time Dashboard" href="/home">
+                                <i class="material-icons">desktop_mac</i> </a></li>
+                            <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Historical Trends" href="/historical">
+                                <i class="material-icons">trending_up</i> </a></li>
+                            <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Center Admin" href="/attendance">
+                                <i class="material-icons">face</i> </a></li>
+                            <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="System Admin" href="/system-monitoring">
+                                <i class="material-icons">phonelink_setup </i>  </a></li>
+                            <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Logout" href="/login">
+                                <i class="material-icons">exit_to_app</i></a></li>
+                        </ul>-->
+                    </div>
+                </div>
+                <ul class="side-nav" id="mobile-demo">
+                    <div class="sidebar-background" style="background-image: url(../assets/img/cny_sidebar.jpeg) "></div>
+                    <div class="sidebar-logo">
+                        <p class="simple-text">CNY</p>
+                    </div>
+                    <li><a class="waves-effect waves-red" href="/home" style="color:white"><i class="material-icons" style="color:white">desktop_mac</i> Home</a></li>
+                    <!--<li><a class="waves-effect waves-red" href="/historical"><i class="material-icons">trending_up</i> Historical Trends</a></li>
+                    <li><a class="waves-effect waves-red" href="collapsible.html"><i class="material-icons">chrome_reader_mode</i> Elderly Attendance</a></li>
+                    <li><a class="waves-effect waves-red" href="/system-monitoring"><i class="material-icons">settings </i> System Monitoring <span class="new badge" data-badge-caption="">3</span> </a></li>
+                    <li><a class="waves-effect waves-red" href="/login"><i class="material-icons">exit_to_app</i> Logout</a></li>-->
+                </ul>
+            </div>
+        </nav>
+
+        <!-- ANGULAR DYNAMIC CONTENT -->
+        <div ng-view></div>
+
+
+    </body>
+</html>
