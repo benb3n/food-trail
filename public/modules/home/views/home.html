@@ -1,7 +1,47 @@
 <div class="row" style="text-align:center">
-    <div class="col s12 pink darken-4" style="opacity: 0.7;">
+    <div class="col s12 pink darken-4" style="opacity: 0.7; margin-bottom: 20px">
         <h1 style="color:white; font-weight:200">CHINESE NEW YEAR</h1>
     </div>
+
+
+    <div id="da-slider" class="da-slider">
+        <div class="da-slide">
+            <h2 style="margin-bottom:10px !important"> Food </h2>
+
+            <p>Words</p>
+
+            <!--<div class="da-img"><img src="img/motivation.png" style="width:300px; height:260px" alt="image01" /></div>-->
+        </div>
+        <div class="da-slide">
+            <h2>Trails</h2>
+
+            <p>Words </p>
+
+            <!--<div class="da-img"><img src="img/analytics.png" style="width:500px; height:260px" alt="image01" /></div>-->
+        </div>
+        <div class="da-slide">
+            <h2>Laughter</h2>
+            <p>Words</p>
+
+            <!--<div class="da-img"><img src="img/solution.png" style="width:350px; height:260px" alt="image01" /></div>-->
+        </div>
+        <nav class="da-arrows">
+            <span class="da-arrows-prev">
+                </span>
+            <span class="da-arrows-next"></span>
+        </nav>
+
+    </div>
+  
+
+    <script type="text/javascript">
+        $(function() {
+            $('#da-slider').cslider({
+                autoplay	: true,
+                bgincrement	: 950
+            });
+        });
+    </script>
 
     <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter to find out more!" href="/trail"><i class="material-icons">arrow_forward</i></a>
 </div>
