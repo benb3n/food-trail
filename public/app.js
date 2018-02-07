@@ -1,8 +1,10 @@
 angular.module('ChineseBiz', [
     'ngRoute',
     'appRoutes',
+    'appConstants',
     'HomeCtrl',
-    'TrailCtrl'
+    'TrailCtrl',
+    'ngMap'
 
 ])
 /*.run(function($rootScope, $http, $location) {

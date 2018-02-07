@@ -1,6 +1,9 @@
-body{
-    font-family: Roboto !important;
-    font-weight: 300;
+body, html{
+  font-family: Roboto !important;
+  font-weight: 300;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 .body-home{
   background: url('../img/cny bg.jpg') no-repeat;
@@ -88,6 +91,12 @@ body{
 .input-field .dropdown-content [type="checkbox"]+label {
   top: -11px !important; /* previously 1px; */
  }
+.map-view {
+   height: 100%; 
+}
+#map {
+  height: 600px !important; 
+}
 nav .brand-logo {
     font-weight: 250;
 }
