@@ -59,29 +59,6 @@ angular.module('TrailCtrl', ['appConstants'])
     function getRoute(){
         if (navigator.geolocation) {
 
-            var option ={
-                enableHighAccuracy: true,
-                //timeout: Infinity,
-                //maximumAge : 0
-            }
-            var watchPosition = navigator.geolocation.watchPosition(success, error, option);
-            console.log(watchPosition)
-            
-            function success(position){
-                var result = find_closest_marker(position)
-      
-                if(result[0] < 300){
-                    console.log(result[1])
-                    $('.modal').modal();
-                    $('#info_modal').modal('open');
-                }
-            }
-            function error(err) {
-                console.warn('ERROR(' + err.code + '): ' + err.message);
-            }
-            //watchPosition = navigator.geolocation.clearWatch(watchPosition);
-            //watchPosition = null
-
             //$timeout(function(){
             navigator.geolocation.getCurrentPosition(function(position) {
                 var pos = {
@@ -96,6 +73,28 @@ angular.module('TrailCtrl', ['appConstants'])
                     calculateAndDisplayRoute(vm.map.directionsService, vm.map.directionsDisplay, pos);
                 });
                
+                var option ={
+                    enableHighAccuracy: true,
+                    //timeout: Infinity,
+                    //maximumAge : 0
+                }
+                var watchPosition = navigator.geolocation.watchPosition(success, error, option);
+                console.log(watchPosition)
+                
+                function success(position){
+                    var result = find_closest_marker(position)
+          
+                    if(result[0] < 300){
+                        navigator.geolocation.clearWatch(watchPosition);
+                        console.log(result[1])
+                        $('.modal').modal();
+                        $('#info_modal').modal('open');
+                        //watchPosition = navigator.geolocation.watchPosition(success, error, option);
+                    }
+                }
+                function error(err) {
+                    console.warn('ERROR(' + err.code + '): ' + err.message);
+                }
                 
             }, function() {
                 handleLocationError(true, vm.map.infoWindow, vm.map.map.getCenter());
