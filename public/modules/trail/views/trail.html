@@ -5,7 +5,7 @@
     </div>
     <div class="col s8">
         <div class="map-view" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{trail.googleMapUrl}}">
-            <ng-map id="map" center="[1.3521, 103.8198]" zoom="13" pan-control="false" map-type-control="false">
+            <ng-map id="map" center="[1.283943, 103.843486]" zoom="13" pan-control="false" map-type-control="false">
                 <!--styles="[{stylers:[{hue:'#2c3e50'},{saturation:250}]},{featureType:'road',elementType:'geometry',stylers:[{lightness:50},{visibility:'simplified'}]},{featureType:'road',elementType:'labels',stylers:[{visibility:'off'}]}]"-->
             </ng-map>
         </div>
@@ -14,7 +14,16 @@
         <div id="directions-panel"></div>
     </div>
     
-
+    <!-- Modal Structure -->
+    <div id="info_modal" class="modal">
+        <div class="modal-content">
+          <h4>WOW IT WORK</h4>
+          <p>You are near a location pin</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>
     
     
     

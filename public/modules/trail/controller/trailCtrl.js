@@ -32,6 +32,7 @@ angular.module('TrailCtrl', ['appConstants'])
 
         vm.dynMarkers = [];
         NgMap.getMap('map').then(function(map) {
+
             google.maps.event.trigger(map, "resize");
 
             vm.map.directionsService = new google.maps.DirectionsService;
@@ -40,8 +41,10 @@ angular.module('TrailCtrl', ['appConstants'])
             vm.map.directionsDisplay.setMap(map);
             //CREATE MARKET
             createMarker(new google.maps.LatLng(1.281035, 103.840953), "Kong Chow Wui Koon", "321 New Bridge Road (S)088758, 088758", "cafe", map)
-            createMarker(new google.maps.LatLng(1.283505, 103.844348), "48 Pagoda Street Singapore 059207", "Chinatown Heritage Centre", "restaurant", map)
+            createMarker(new google.maps.LatLng(1.283505, 103.844348), "Chinatown Heritage Centre", "48 Pagoda Street Singapore 059207", "restaurant", map)
+            createMarker(new google.maps.LatLng(1.295258, 103.850578), "SMU SOB", "50 Stamford Road, Singapore Management University, Singapore 178899", "cafe", map)
 
+            
         });
    
         
@@ -55,6 +58,31 @@ angular.module('TrailCtrl', ['appConstants'])
       
     function getRoute(){
         if (navigator.geolocation) {
+
+            var option ={
+                enableHighAccuracy: true,
+                //timeout: Infinity,
+                //maximumAge : 0
+            }
+            var watchPosition = navigator.geolocation.watchPosition(success, error, option);
+            console.log(watchPosition)
+            
+            function success(position){
+                var result = find_closest_marker(position)
+      
+                if(result[0] < 300){
+                    console.log(result[1])
+                    $('.modal').modal();
+                    $('#info_modal').modal('open');
+                }
+            }
+            function error(err) {
+                console.warn('ERROR(' + err.code + '): ' + err.message);
+            }
+            //watchPosition = navigator.geolocation.clearWatch(watchPosition);
+            //watchPosition = null
+
+            //$timeout(function(){
             navigator.geolocation.getCurrentPosition(function(position) {
                 var pos = {
                     lat: position.coords.latitude,
@@ -72,6 +100,7 @@ angular.module('TrailCtrl', ['appConstants'])
             }, function() {
                 handleLocationError(true, vm.map.infoWindow, vm.map.map.getCenter());
             });
+            //}, 5000)
         } else {
             // Browser doesn't support Geolocation
             handleLocationError(false, vm.map.infoWindow, vm.map.map.getCenter());
@@ -82,19 +111,41 @@ angular.module('TrailCtrl', ['appConstants'])
     /************************    
         HELPER FUNCTIONS        
     ************************/
+    function rad(x) {return x*Math.PI/180;}
+    function find_closest_marker( event ) {
+        var lat = event.coords.latitude;
+        var lng = event.coords.longitude;
+        var R = 6371; // radius of earth in km
+        var distances = [];
+        var closest = -1;
+        vm.map.markers.forEach(function(marker, index){
+            var mlat = marker.position.lat();
+            var mlng = marker.position.lng();
+            var dLat  = rad(mlat - lat);
+            var dLong = rad(mlng - lng);
+            var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(rad(lat)) * Math.cos(rad(lat)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            var d = R * c;
+            distances[index] = d;
+            if ( closest == -1 || d < distances[closest] ) {
+                closest = index;
+            }
+        })
+        //console.log(closest)
+        return [(distances[closest]*1000), vm.map.markers[closest]]
+    }
+
     function calculateAndDisplayRoute(directionsService, directionsDisplay, pos) {
         var waypts = [];
 
-        waypts.push({
-          location: vm.map.markers[0].position,
-          stopover: true
-        });
-        waypts.push({
-          location: vm.map.markers[1].position,
-          stopover: true
-        });
+        vm.map.markers.forEach(function(marker, index){
+            waypts.push({
+                location: marker.position,
+                stopover: true
+              });
+        })
 
-        //console.log(pos)
         directionsService.route({
           origin: new google.maps.LatLng(pos.lat, pos.lng), //document.getElementById('start').value,
           destination: "Chinatown MRT", //new google.maps.LatLng(pos.lat, pos.lng), //document.getElementById('end').value,
@@ -141,8 +192,8 @@ angular.module('TrailCtrl', ['appConstants'])
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          infoWindow.setContent(html);
-          infoWindow.open(map, marker);
+          vm.map.infoWindow.setContent(html);
+          vm.map.infoWindow.open(map, marker);
         });
         vm.map.markers.push(marker);
     }
