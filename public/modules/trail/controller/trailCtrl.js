@@ -43,6 +43,7 @@ angular.module('TrailCtrl', ['appConstants'])
             createMarker(new google.maps.LatLng(1.281035, 103.840953), "Kong Chow Wui Koon", "321 New Bridge Road (S)088758, 088758", "cafe", map)
             createMarker(new google.maps.LatLng(1.283505, 103.844348), "Chinatown Heritage Centre", "48 Pagoda Street Singapore 059207", "restaurant", map)
             createMarker(new google.maps.LatLng(1.295258, 103.850578), "SMU SOB", "50 Stamford Road, Singapore Management University, Singapore 178899", "cafe", map)
+            createMarker(new google.maps.LatLng(1.322674, 103.815271), "Botanic Garden MRT", "501 Bukit Timah Road, #01-01 Cluny Court, Singapore 259760", "cafe", map)
 
             
         });
@@ -83,7 +84,13 @@ angular.module('TrailCtrl', ['appConstants'])
                 
                 function success(position){
                     var result = find_closest_marker(position)
-          
+                    NgMap.getMap('map').then(function(map) {
+                        vm.map.infoWindow.setPosition(position);
+                        vm.map.infoWindow.setContent('Location found.');
+                        vm.map.infoWindow.open(map);
+              
+                    });
+
                     if(result[0] < 300){
                         navigator.geolocation.clearWatch(watchPosition);
                         console.log(result[1])
