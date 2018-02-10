@@ -12,6 +12,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'TrailController',
             controllerAs: "trail"
         })
+        .when('/gallery', {
+            templateUrl: 'modules/gallery/views/gallery.html',
+            controller: 'GalleryController',
+            controllerAs: "gallery"
+        })
+
 
         $locationProvider.html5Mode(true);
 

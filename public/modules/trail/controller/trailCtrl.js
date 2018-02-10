@@ -29,6 +29,16 @@ angular.module('TrailCtrl', ['appConstants'])
             directionsDisplay: {},
             markers: []
         }
+        vm.data = {
+            locations: [
+                {lat: 1.281035, lng: 103.840953, name: "Singapore Kong Chow Wui Koon", address: "321 New Bridge Rd, Singapore", icon: "cafe"},
+                {lat: 1.283505, lng: 103.844348, name: "Chinatown Heritage Centre", address: "48 Pagoda St, Singapore 059207", icon: "restaurant"},
+                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe"},
+                {lat: 1.322674, lng: 103.815271, name: "Botanic Garden MRT", address: "501 Bukit Timah Rd, Singapore 259760", icon: "cafe"},
+                {lat: 1.312738, lng: 103.838187, name: "Newton MRT", address: "49 Scotts Rd, Singapore 228234", icon: "cafe"}
+            ],
+            locations_by_name:{}
+        }
 
         vm.dynMarkers = [];
         NgMap.getMap('map').then(function(map) {
@@ -40,12 +50,11 @@ angular.module('TrailCtrl', ['appConstants'])
             vm.map.infoWindow = new google.maps.InfoWindow;
             vm.map.directionsDisplay.setMap(map);
             //CREATE MARKET
-            createMarker(new google.maps.LatLng(1.281035, 103.840953), "Kong Chow Wui Koon", "321 New Bridge Road (S)088758, 088758", "cafe", map)
-            createMarker(new google.maps.LatLng(1.283505, 103.844348), "Chinatown Heritage Centre", "48 Pagoda Street Singapore 059207", "restaurant", map)
-            createMarker(new google.maps.LatLng(1.295258, 103.850578), "SMU SOB", "50 Stamford Road, Singapore Management University, Singapore 178899", "cafe", map)
-            createMarker(new google.maps.LatLng(1.322674, 103.815271), "Botanic Garden MRT", "501 Bukit Timah Road, #01-01 Cluny Court, Singapore 259760", "cafe", map)
-
-            
+            vm.data.locations.forEach(function(location, index){
+                vm.data.locations_by_name[''+location.address] = location;
+                createMarker(new google.maps.LatLng( parseFloat(location.lat), parseFloat(location.lng) ), location.name, location.address, location.icon, map)
+            })
+  
         });
    
         
@@ -84,9 +93,14 @@ angular.module('TrailCtrl', ['appConstants'])
                 
                 function success(position){
                     var result = find_closest_marker(position)
+                    console.log(position)
                     NgMap.getMap('map').then(function(map) {
-                        vm.map.infoWindow.setPosition(position);
-                        vm.map.infoWindow.setContent('Location found.');
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        vm.map.infoWindow.setPosition(pos);
+                        vm.map.infoWindow.setContent('Location Found.');
                         vm.map.infoWindow.open(map);
               
                     });
@@ -166,12 +180,13 @@ angular.module('TrailCtrl', ['appConstants'])
             summaryPanel.innerHTML = '';
             // For each route, display summary information.
             for (var i = 0; i < route.legs.length; i++) {
-              var routeSegment = i + 1;
-              summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-                  '</b><br>';
-              summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-              summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-              summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                var routeSegment = i + 1;
+                summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment + '</b><br>';
+                summaryPanel.innerHTML += (typeof vm.data.locations_by_name[route.legs[i].start_address] != 'undefined') ? vm.data.locations_by_name[route.legs[i].start_address].name + ' to ' : route.legs[i].start_address + ' to ';
+                //summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+                summaryPanel.innerHTML += (i == route.legs.length-1)? "Chinatown MRT" : (typeof vm.data.locations_by_name[route.legs[i].end_address] != 'undefined') ? vm.data.locations_by_name[route.legs[i].end_address].name + '<br>': route.legs[i].end_address + '<br>';
+                //summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                summaryPanel.innerHTML += route.legs[i].distance.text + ' (' + route.legs[i].duration.text + ') <br><br>';
             }
           } else {
             window.alert('Directions request failed due to ' + status);

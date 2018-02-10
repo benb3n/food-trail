@@ -4,6 +4,7 @@ angular.module('ChineseBiz', [
     'appConstants',
     'HomeCtrl',
     'TrailCtrl',
+    'GalleryCtrl',
     'ngMap'
 
 ])
