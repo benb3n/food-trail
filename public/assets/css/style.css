@@ -22,6 +22,11 @@ body, html{
   height: 500px !important;
 }
 
+.carousel-item-image{
+  width: 600px !important;
+  height: 500px !important;
+}
+
 .card .input-field .filter-label {
   font-size: 15px !important;
 }
@@ -185,6 +190,10 @@ nav .brand-logo {
   .carousel-item{
     width: 90% !important;
     height: 90% !important;
+  }
+  .carousel-item-image{
+    width: 100% !important;
+    height: 100% !important;
   }
   #map {
     height: 450px !important; 
