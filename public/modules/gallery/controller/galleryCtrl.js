@@ -15,9 +15,11 @@ angular.module('GalleryCtrl', [])
         $('select').material_select();
         $('.modal').modal();
         $('.tooltipped').tooltip({delay: 50});
+        $('.carousel').carousel();
     });
 
-    $(document).ready(function(){
-        $('.tooltipped').tooltip({delay: 50});
-    });
+    initController();
+    function initController(){
+    }
+
 })

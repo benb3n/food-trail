@@ -7,11 +7,12 @@
     "angular-animate": "^1.6.7",
     "angular-aria": "^1.6.7",
     "angular-route": "^1.6.7",
+    "angular-super-gallery": "^1.2.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "jquery": "^3.2.1",
-    "method-override": "^2.3.10",
     "materialize-css": "^0.100.2",
+    "method-override": "^2.3.10",
     "moment": "^2.19.4",
     "moment-range": "^3.1.0",
     "ngmap": "^1.18.4"

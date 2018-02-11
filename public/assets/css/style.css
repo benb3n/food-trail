@@ -1,5 +1,5 @@
 body, html{
-  font-family: Roboto !important;
+  font-family: 'Roboto' !important;
   font-weight: 300;
   height: 100%;
   margin: 0;
@@ -15,6 +15,11 @@ body, html{
 .brand-title{
   color:white; 
   font-weight:200
+}
+
+.carousel-item{
+  width: 500px !important;
+  height: 500px !important;
 }
 
 .card .input-field .filter-label {
@@ -176,6 +181,10 @@ nav .brand-logo {
     color:white; 
     font-weight:200;
     font-size: 50px;
+  }
+  .carousel-item{
+    width: 90% !important;
+    height: 90% !important;
   }
   #map {
     height: 450px !important; 
