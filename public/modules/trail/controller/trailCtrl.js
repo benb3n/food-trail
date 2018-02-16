@@ -27,18 +27,31 @@ angular.module('TrailCtrl', ['appConstants'])
             infoWindow: {},
             directionsService: {},
             directionsDisplay: {},
-            markers: []
+            markers: [],
+            watchPosition: {}
         }
         vm.data = {
             locations: [
-                {lat: 1.281035, lng: 103.840953, name: "Singapore Kong Chow Wui Koon", address: "321 New Bridge Rd, Singapore", icon: "cafe"},
-                {lat: 1.283505, lng: 103.844348, name: "Chinatown Heritage Centre", address: "48 Pagoda St, Singapore 059207", icon: "restaurant"},
-                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe"},
-                {lat: 1.322674, lng: 103.815271, name: "Botanic Garden MRT", address: "501 Bukit Timah Rd, Singapore 259760", icon: "cafe"},
-                {lat: 1.312738, lng: 103.838187, name: "Newton MRT", address: "49 Scotts Rd, Singapore 228234", icon: "cafe"}
+                {lat: 1.281035, lng: 103.840953, name: "Singapore Kong Chow Wui Koon", address: "321 New Bridge Rd, Singapore", icon: "cafe",
+                category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},
+                {lat: 1.283505, lng: 103.844348, name: "Chinatown Heritage Centre", address: "48 Pagoda St, Singapore 059207", icon: "restaurant", 
+                category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                phone: "+65" , img: "../assets/img/tong_heng_logo.jpg"},
+                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe", 
+                category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},
+                {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
+                category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},
+                {lat: 1.281615, lng: 103.844961, name: "Tong Heng Pastries", address: "285 South Bridge Rd, 058833", icon: "cafe",
+                category: "patisserie", hours: "9am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                phone: "+65 6223 3649", img: "../assets/img/tong_heng_logo.jpg"}
             ],
             locations_by_name:{}
         }
+
+        
 
         vm.dynMarkers = [];
         NgMap.getMap('map').then(function(map) {
@@ -52,7 +65,7 @@ angular.module('TrailCtrl', ['appConstants'])
             //CREATE MARKET
             vm.data.locations.forEach(function(location, index){
                 vm.data.locations_by_name[''+location.address] = location;
-                createMarker(new google.maps.LatLng( parseFloat(location.lat), parseFloat(location.lng) ), location.name, location.address, location.icon, map)
+                createMarker(new google.maps.LatLng( parseFloat(location.lat), parseFloat(location.lng) ), location.name, location.address, location.icon, location, map)
             })
   
         });
@@ -65,7 +78,13 @@ angular.module('TrailCtrl', ['appConstants'])
         BUTTON CLICKS
     **********************/
     vm.getRoute = getRoute;
-      
+    vm.submitQuiz = submitQuiz;
+
+    function submitQuiz(){
+        vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
+
+    }
+
     function getRoute(){
         if (navigator.geolocation) {
 
@@ -76,10 +95,26 @@ angular.module('TrailCtrl', ['appConstants'])
                     lng: position.coords.longitude
                 };
                 NgMap.getMap('map').then(function(map) {
-                    vm.map.infoWindow.setPosition(pos);
+                    /*vm.map.infoWindow.setPosition(pos);
                     vm.map.infoWindow.setContent('Location found.');
-                    vm.map.infoWindow.open(map);
+                    vm.map.infoWindow.open(map);*/
                     map.setCenter(pos);
+
+                    var icon= {
+                        url: "../assets/img/markers/Arrow_3.png",
+                        scaledSize: new google.maps.Size(50, 50), // scaled size
+                    }
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: pos,
+                        animation: google.maps.Animation.DROP,
+                        icon: icon
+                      });
+              
+                      google.maps.event.addListener(marker, 'click', function() {
+                        vm.map.infoWindow.setContent(html);
+                        vm.map.infoWindow.open(map, marker);
+                      });
                     calculateAndDisplayRoute(vm.map.directionsService, vm.map.directionsDisplay, pos);
                 });
                
@@ -88,9 +123,18 @@ angular.module('TrailCtrl', ['appConstants'])
                     //timeout: Infinity,
                     //maximumAge : 0
                 }
-                var watchPosition = navigator.geolocation.watchPosition(success, error, option);
-                console.log(watchPosition)
+                //vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
+                //console.log(watchPosition)
                 
+                function toggleBounce() {
+                    if (marker.getAnimation() !== null) {
+                      marker.setAnimation(null);
+                    } else {
+                      marker.setAnimation(google.maps.Animation.BOUNCE);
+                    }
+                }
+            
+
                 function success(position){
                     var result = find_closest_marker(position)
                     console.log(position)
@@ -106,7 +150,7 @@ angular.module('TrailCtrl', ['appConstants'])
                     });
 
                     if(result[0] < 300){
-                        navigator.geolocation.clearWatch(watchPosition);
+                        navigator.geolocation.clearWatch(vm.map.watchPosition);
                         console.log(result[1])
                         $('.modal').modal();
                         $('#info_modal').modal('open');
@@ -194,21 +238,38 @@ angular.module('TrailCtrl', ['appConstants'])
         });
     }
 
-    function createMarker(latlng, name, address, feature, map) {
+    function createMarker(latlng, name, address, feature, location,  map) {
         var iconBase = 'https://maps.google.com/mapfiles/kml/pal2/';
         var icons = {
           cafe: {
-            icon: iconBase + 'icon54.png'
+            icon: {
+                url: "../assets/img/markers/Shop_5.png",
+                scaledSize: new google.maps.Size(50, 50), // scaled size
+            }
+            //icon: iconBase + 'icon54.png'
           },
           restaurant: {
-            icon: iconBase + 'icon55.png'
+            icon: {
+                url: "../assets/img/markers/Shop_7.png",
+                scaledSize: new google.maps.Size(50, 50), // scaled size
+                origin: new google.maps.Point(0,0), // origin
+                anchor: new google.maps.Point(0, 0) // anchor
+            }
+            //icon: iconBase + 'icon55.png'
           }
         }
 
-        var html = "<b>" + name + "</b> <br/>" + address;
+        var html = //<b>" + name + "</b> <br/>" + address
+        "<img style='float:left; width:200px; margin-top:10px' src='"+ location.img +"'> " +
+        "<div style='margin-left:220px; margin-bottom:20px;'> " +
+        "<h5>"+ location.name +"</h5><p>"+ location.description +"</p> " +
+        "<p><b>Open:</b> "+ location.hours +"<br/><b>Phone:</b> "+ location.phone +"</p> " +
+        "<p><img src='https://maps.googleapis.com/maps/api/streetview?size=250x120&location="+ location.lat + "," + location.lng +"&key="+GOOGLE_MAPS_KEY+"'    ></p>" +
+        "</div> ";
         var marker = new google.maps.Marker({
           map: map,
           position: latlng,
+          animation: google.maps.Animation.DROP,
           icon: icons[feature].icon
         });
 
