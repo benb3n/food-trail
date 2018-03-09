@@ -1,7 +1,7 @@
 <div>
     <div class="col s12" style="margin:5px">
         <a class="btn-floating waves-effect waves-light btn-small red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Get Route" ng-click="trail.getRoute()"><i class="material-icons left">directions_walk</i></a>
-
+       
     </div>
     <div class="col s8">
         <div class="map-view" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{trail.googleMapUrl}}">
@@ -23,8 +23,32 @@
         <div class="modal-footer">
           <a href="trail.submitQuiz()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
-      </div>
+    </div>
     
+
+    <ul id="slide-out" class="side-nav">
+        <div class="sidebar-background" style="background-image: url(../assets/img/cny_sidebar.jpeg) "></div>
+        
+        <div class="sidebar-logo">
+            <i class='material-icons white' ng-click="trail.closeModal()">close</i>
+            <div class="sidebar-logo">
+                <p class="simple-text">{{trail.location.name}}</p>
+            </div>
+            <div style="margin:5px; text-align:center">
+                <img  width='80px' src="{{trail.location.img}}">
+            </div>
+            <div style="margin:5px">
+                <p class="white-text">{{trail.location.description}}</p>
+            </div>
+            <div style="margin:5px">
+                    <p class="white-text">Opening Hour</p>
+                <p class="white-text">{{trail.location.hours}}</p>
+            </div>
+        </div>
+    </ul>
+
+      
+         
     
     
 

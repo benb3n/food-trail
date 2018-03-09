@@ -9,8 +9,13 @@ angular.module('TrailCtrl', ['appConstants'])
         $('.button-collapse').sideNav({
             menuWidth: 300, // Default is 240
             edge: 'left', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true
+        });
+        $('.location-collapse').sideNav({
+            edge: 'right', // Choose the horizontal origin
             closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            });
+        });
         $('select').material_select();
         $('.modal').modal();
         $('.tooltipped').tooltip({delay: 50});
@@ -32,21 +37,24 @@ angular.module('TrailCtrl', ['appConstants'])
         }
         vm.data = {
             locations: [
-                {lat: 1.281035, lng: 103.840953, name: "Singapore Kong Chow Wui Koon", address: "321 New Bridge Rd, Singapore", icon: "cafe",
+                /*{{lat: 1.281035, lng: 103.840953, name: "Singapore Kong Chow Wui Koon", address: "321 New Bridge Rd, Singapore", icon: "cafe",
                 category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},
                 {lat: 1.283505, lng: 103.844348, name: "Chinatown Heritage Centre", address: "48 Pagoda St, Singapore 059207", icon: "restaurant", 
                 category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65" , img: "../assets/img/tong_heng_logo.jpg"},
-                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe", 
+                lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe", 
                 category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},
+                phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},*/
                 {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},
                 {lat: 1.281615, lng: 103.844961, name: "Tong Heng Pastries", address: "285 South Bridge Rd, 058833", icon: "cafe",
                 category: "patisserie", hours: "9am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 6223 3649", img: "../assets/img/tong_heng_logo.jpg"}
+                phone: "+65 6223 3649", img: "../assets/img/tong_heng_logo.jpg"},
+                {lat: 1.280222, lng: 103.843555, name: "Tea Chapter Trading Pte Ltd", address: "9 & 11 Neil Road, Singapore 088808", icon: "cafe",
+                category: "tea", hours: "11am - 9pm", description: "Dedicated to the education on Chinese Tea Appreciation, as well as the highest levels of service standards.", 
+                phone: "+65 6226 1175" , img: "../assets/img/tea_chapter_logo.png"},
             ],
             locations_by_name:{}
         }
@@ -79,10 +87,15 @@ angular.module('TrailCtrl', ['appConstants'])
     **********************/
     vm.getRoute = getRoute;
     vm.submitQuiz = submitQuiz;
+    vm.closeModal = closeModal;
 
     function submitQuiz(){
         vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
 
+    }
+
+    function closeModal(){
+        $('.location-collapse').sideNav('hide');
     }
 
     function getRoute(){
@@ -219,6 +232,7 @@ angular.module('TrailCtrl', ['appConstants'])
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
+            directionsDisplay.setOptions( { suppressMarkers: true } );
             var route = response.routes[0];
             var summaryPanel = document.getElementById('directions-panel');
             summaryPanel.innerHTML = '';
@@ -259,13 +273,18 @@ angular.module('TrailCtrl', ['appConstants'])
           }
         }
 
+        var screen_width = window.innerWidth - 100;
+
         var html = //<b>" + name + "</b> <br/>" + address
-        "<img style='float:left; width:200px; margin-top:10px' src='"+ location.img +"'> " +
-        "<div style='margin-left:220px; margin-bottom:20px;'> " +
-        "<h5>"+ location.name +"</h5><p>"+ location.description +"</p> " +
-        "<p><b>Open:</b> "+ location.hours +"<br/><b>Phone:</b> "+ location.phone +"</p> " +
-        "<p><img src='https://maps.googleapis.com/maps/api/streetview?size=250x120&location="+ location.lat + "," + location.lng +"&key="+GOOGLE_MAPS_KEY+"'    ></p>" +
-        "</div> ";
+        "<div style='width:"+ screen_width +"px'>" +
+        "<img style='float:left; width:70px; margin-top:0px' src='"+ location.img +"'> " +
+        "<div style='margin-left:50px; margin-bottom:20px;'> " +
+        "<h6>"+ location.name +"</h6> <p>"+ location.description +"</p> " +
+        //"<p><b>Open:</b> "+ location.hours +"<br/><b>Phone:</b> "+ location.phone +"</p> " +
+        "Find Out More <a href='#' id='a' data-activates='slide-out' class='location-collapse'><i class='material-icons'>search</i></a>" +
+        //"<p><img src='https://maps.googleapis.com/maps/api/streetview?size=250x120&location="+ location.lat + "," + location.lng +"&key="+GOOGLE_MAPS_KEY+"'    ></p>" +
+        "</div></div> ";
+
         var marker = new google.maps.Marker({
           map: map,
           position: latlng,
@@ -274,9 +293,24 @@ angular.module('TrailCtrl', ['appConstants'])
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          vm.map.infoWindow.setContent(html);
-          vm.map.infoWindow.open(map, marker);
+            vm.map.infoWindow.setContent(html);
+            vm.map.infoWindow.open(map, marker);
+
+            vm.location = {};
+            vm.location.name = location.name
+            vm.location.description  = location.description 
+            vm.location.img = location.img 
+            vm.location.hours = location.hours 
+
+            $timeout(function(){
+                $('.location-collapse').sideNav({
+                    menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
+                    edge: 'right', // Choose the horizontal origin
+                    closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                });
+            });
         });
+        
         vm.map.markers.push(marker);
     }
 
@@ -287,4 +321,5 @@ angular.module('TrailCtrl', ['appConstants'])
                               'Error: Your browser doesn\'t support geolocation.');
         vm.map.infoWindow.open(map);
     }
+    
 })
