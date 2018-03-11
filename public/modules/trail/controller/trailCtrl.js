@@ -4,6 +4,10 @@ angular.module('TrailCtrl', ['appConstants'])
     document.getElementById("body_content").setAttribute('class', '');
     
     $(document).ready(function() {
+        navigator.getUserMedia = (navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || 
+            navigator.msGetUserMedia);
         // TABS
         $('ul.tabs').tabs();
         $('.button-collapse').sideNav({
