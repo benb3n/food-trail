@@ -18,7 +18,7 @@
     <div id="info_modal" class="modal">
         <div class="modal-content" style="text-align: center">
             <h5>Find a QR Code</h5>
-            <qr-scanner ng-success="trail.onQRReaderSuccess(data)" ng-error="trailonError(error)" data-activates="slide-out" class="location-collapse"/>
+            <qr-scanner ng-success="trail.onQRReaderSuccess(data)" ng-error="trailonError(error)" accept="image/*" capture="camera" data-activates="slide-out" class="location-collapse"/>
             <label class="red text" id="qr_error"></label>
         </div>
         <!--<div class="modal-footer">
