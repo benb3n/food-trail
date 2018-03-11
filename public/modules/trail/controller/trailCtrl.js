@@ -8,9 +8,11 @@ angular.module('TrailCtrl', ['appConstants'])
 			$('#read').html(data);
 		},
 		function(error){
-			$('#read_error').html(error);
+            alert(error)
+            //$('#read_error').html(error);
 		}, function(videoError){
-			$('#vid_error').html(videoError);
+            alert(videoError)
+            //$('#vid_error').html(videoError);
 		}
 	);
         /*if (hasGetUserMedia()) {
