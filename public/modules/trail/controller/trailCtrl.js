@@ -4,11 +4,20 @@ angular.module('TrailCtrl', ['appConstants'])
     document.getElementById("body_content").setAttribute('class', '');
     
     $(document).ready(function() {
-        if (hasGetUserMedia()) {
+        $('#reader').html5_qrcode(function(data){
+			$('#read').html(data);
+		},
+		function(error){
+			$('#read_error').html(error);
+		}, function(videoError){
+			$('#vid_error').html(videoError);
+		}
+	);
+        /*if (hasGetUserMedia()) {
             // Good to go!
         } else {
             alert('getUserMedia() is not supported by your browser');
-        }
+        }*/
         // TABS
         $('ul.tabs').tabs();
         $('.button-collapse').sideNav({
@@ -135,7 +144,7 @@ angular.module('TrailCtrl', ['appConstants'])
     function onQRReaderError(error){
         console.log("E ", data)
         $('#qr_error').val("Invalid Code " + error)
-        alert("E")
+        alert(error)
     }
 
     function onVideoError(error) {

@@ -22,7 +22,7 @@
 
             <input type="file" accept="image/*;capture=camera">
 
-
+            <div  id="reader" style="width:300px;height:250px;"></div>
         
             <qr-scanner ng-success="trail.onQRReaderSuccess(data)" ng-error="trailonError(error)"  data-activates="slide-out" class="location-collapse"/>
             <label class="red text" id="qr_error"></label>
