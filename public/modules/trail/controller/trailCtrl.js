@@ -109,6 +109,7 @@ angular.module('TrailCtrl', ['appConstants'])
     vm.closeModal = closeModal;
     vm.onQRReaderSuccess = onQRReaderSuccess;
     vm.onQRReaderError = onQRReaderError;
+    vm.onVideoError = onVideoError;
 
     var read_once = 0;
     function onQRReaderSuccess(data) {
@@ -131,10 +132,15 @@ angular.module('TrailCtrl', ['appConstants'])
         }
     }
 
-    function onQRReaderError(data){
+    function onQRReaderError(error){
         console.log("E ", data)
-        $('#qr_error').val("Invalid Code")
+        $('#qr_error').val("Invalid Code " + error)
+        alert("E")
     }
+
+    function onVideoError(error) {
+        alert(error);
+    };
 
     function submitQuiz(){
         vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
@@ -222,6 +228,7 @@ angular.module('TrailCtrl', ['appConstants'])
 
                         $('.modal').modal();
                         $('#info_modal').modal('open');
+
                         //watchPosition = navigator.geolocation.watchPosition(success, error, option);
                     }
                 }

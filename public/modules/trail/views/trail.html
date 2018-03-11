@@ -10,6 +10,7 @@
             </ng-map>
         </div>
     </div>
+    
     <div class="col s4">
         <div id="directions-panel"></div>
     </div>
@@ -19,9 +20,10 @@
         <div class="modal-content" style="text-align: center">
             <h5>Find a QR Code</h5>
 
-            <input type=file accept="image/*" capture=environment>
             <input type="file" accept="image/*;capture=camera">
 
+
+        
             <qr-scanner ng-success="trail.onQRReaderSuccess(data)" ng-error="trailonError(error)"  data-activates="slide-out" class="location-collapse"/>
             <label class="red text" id="qr_error"></label>
         </div>
