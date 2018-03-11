@@ -14,7 +14,8 @@ angular.module('TrailCtrl', ['appConstants'])
         });
         $('.location-collapse').sideNav({
             edge: 'right', // Choose the horizontal origin
-            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
         });
         $('select').material_select();
         $('.modal').modal();
@@ -46,6 +47,10 @@ angular.module('TrailCtrl', ['appConstants'])
                 lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe", 
                 category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},*/
+                
+                {lat: 1.317290, lng: 103.832748, name: "HOME", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
+                category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},
                 {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},
@@ -67,7 +72,7 @@ angular.module('TrailCtrl', ['appConstants'])
             google.maps.event.trigger(map, "resize");
 
             vm.map.directionsService = new google.maps.DirectionsService;
-            vm.map.directionsDisplay = new google.maps.DirectionsRenderer;
+            vm.map.directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions:{strokeColor:"#4a4a4a",strokeWeight:3}});
             vm.map.infoWindow = new google.maps.InfoWindow;
             vm.map.directionsDisplay.setMap(map);
             //CREATE MARKET
@@ -88,6 +93,34 @@ angular.module('TrailCtrl', ['appConstants'])
     vm.getRoute = getRoute;
     vm.submitQuiz = submitQuiz;
     vm.closeModal = closeModal;
+    vm.onQRReaderSuccess = onQRReaderSuccess;
+    vm.onQRReaderError = onQRReaderError;
+
+    var read_once = 0;
+    function onQRReaderSuccess(data) {
+        console.log("S ", data)
+        
+        //if(data == vm.location.name && read_once == 0){
+        if(read_once == 0){
+            $('#info_modal').modal('close');
+ 
+            read_once++;
+
+            $('.location-collapse').sideNav({
+                menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            });
+            $('.location-collapse').sideNav('show');
+        }else{
+            $('#qr_error').val("Invalid Code")
+        }
+    }
+
+    function onQRReaderError(data){
+        console.log("E ", data)
+        $('#qr_error').val("Invalid Code")
+    }
 
     function submitQuiz(){
         vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
@@ -95,6 +128,7 @@ angular.module('TrailCtrl', ['appConstants'])
     }
 
     function closeModal(){
+        read_once = 0;
         $('.location-collapse').sideNav('hide');
     }
 
@@ -113,7 +147,7 @@ angular.module('TrailCtrl', ['appConstants'])
                     vm.map.infoWindow.open(map);*/
                     map.setCenter(pos);
 
-                    var icon= {
+                    /*var icon= {
                         url: "../assets/img/markers/Arrow_3.png",
                         scaledSize: new google.maps.Size(50, 50), // scaled size
                     }
@@ -122,12 +156,12 @@ angular.module('TrailCtrl', ['appConstants'])
                         position: pos,
                         animation: google.maps.Animation.DROP,
                         icon: icon
-                      });
+                    });
               
                       google.maps.event.addListener(marker, 'click', function() {
                         vm.map.infoWindow.setContent(html);
                         vm.map.infoWindow.open(map, marker);
-                      });
+                      });*/
                     calculateAndDisplayRoute(vm.map.directionsService, vm.map.directionsDisplay, pos);
                 });
                
@@ -136,7 +170,7 @@ angular.module('TrailCtrl', ['appConstants'])
                     //timeout: Infinity,
                     //maximumAge : 0
                 }
-                //vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
+                vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
                 //console.log(watchPosition)
                 
                 function toggleBounce() {
@@ -150,21 +184,28 @@ angular.module('TrailCtrl', ['appConstants'])
 
                 function success(position){
                     var result = find_closest_marker(position)
-                    console.log(position)
+                    console.log(result[0])
+                    //console.log(position)
                     NgMap.getMap('map').then(function(map) {
                         var pos = {
                             lat: position.coords.latitude,
                             lng: position.coords.longitude
                         };
                         vm.map.infoWindow.setPosition(pos);
-                        vm.map.infoWindow.setContent('Location Found.');
+                        vm.map.infoWindow.setContent('You are HERE NOW.');
                         vm.map.infoWindow.open(map);
               
                     });
 
-                    if(result[0] < 300){
+                    if(result[0] < 200){
                         navigator.geolocation.clearWatch(vm.map.watchPosition);
                         console.log(result[1])
+                        vm.location = {};
+                        vm.location.name = result[1].description.name
+                        vm.location.description  = result[1].description.description 
+                        vm.location.img = result[1].description.img 
+                        vm.location.hours = result[1].description.hours 
+
                         $('.modal').modal();
                         $('#info_modal').modal('open');
                         //watchPosition = navigator.geolocation.watchPosition(success, error, option);
@@ -189,6 +230,7 @@ angular.module('TrailCtrl', ['appConstants'])
         HELPER FUNCTIONS        
     ************************/
     function rad(x) {return x*Math.PI/180;}
+    
     function find_closest_marker( event ) {
         var lat = event.coords.latitude;
         var lng = event.coords.longitude;
@@ -232,7 +274,8 @@ angular.module('TrailCtrl', ['appConstants'])
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
-            directionsDisplay.setOptions( { suppressMarkers: true } );
+            //directionsDisplay.setOptions( { suppressMarkers: true } );
+            
             var route = response.routes[0];
             var summaryPanel = document.getElementById('directions-panel');
             summaryPanel.innerHTML = '';
@@ -289,7 +332,8 @@ angular.module('TrailCtrl', ['appConstants'])
           map: map,
           position: latlng,
           animation: google.maps.Animation.DROP,
-          icon: icons[feature].icon
+          icon: icons[feature].icon,
+          description: location
         });
 
         google.maps.event.addListener(marker, 'click', function() {

@@ -5,7 +5,8 @@ angular.module('ChineseBiz', [
     'HomeCtrl',
     'TrailCtrl',
     'GalleryCtrl',
-    'ngMap'
+    'ngMap',
+    'qrScanner'
 
 ])
 /*.run(function($rootScope, $http, $location) {

@@ -1,6 +1,6 @@
 <div>
     <div class="col s12" style="margin:5px">
-        <a class="btn-floating waves-effect waves-light btn-small red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Get Route" ng-click="trail.getRoute()"><i class="material-icons left">directions_walk</i></a>
+        <a class="btn  waves-effect waves-light btn-small red" ng-click="trail.getRoute()"><i class="material-icons left">directions_walk</i> Start Trail</a>
        
     </div>
     <div class="col s8">
@@ -16,19 +16,19 @@
     
     <!-- Modal Structure -->
     <div id="info_modal" class="modal">
-        <div class="modal-content">
-          <h4>Quiz</h4>
-          <p>You are near a location pin</p>
+        <div class="modal-content" style="text-align: center">
+            <h5>Find a QR Code</h5>
+            <qr-scanner ng-success="trail.onQRReaderSuccess(data)" ng-error="trailonError(error)" data-activates="slide-out" class="location-collapse"/>
+            <label class="red text" id="qr_error"></label>
         </div>
-        <div class="modal-footer">
+        <!--<div class="modal-footer">
           <a href="trail.submitQuiz()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+        </div>-->
     </div>
     
 
     <ul id="slide-out" class="side-nav">
         <div class="sidebar-background" style="background-image: url(../assets/img/cny_sidebar.jpeg) "></div>
-        
         <div class="sidebar-logo">
             <i class='material-icons white' ng-click="trail.closeModal()">close</i>
             <div class="sidebar-logo">
@@ -43,6 +43,12 @@
             <div style="margin:5px">
                     <p class="white-text">Opening Hour</p>
                 <p class="white-text">{{trail.location.hours}}</p>
+            </div>
+            <div>
+                    <div class="fb-share-button" data-href="http://food-trail.herokuapp.com/home" data-layout="button" data-size="small" data-mobile-iframe="true">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffood-trail.herokuapp.com%2Fhome&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+                    </div>
+
             </div>
         </div>
     </ul>
