@@ -44,13 +44,14 @@ angular.module('TrailCtrl', ['appConstants'])
                 {lat: 1.283505, lng: 103.844348, name: "Chinatown Heritage Centre", address: "48 Pagoda St, Singapore 059207", icon: "restaurant", 
                 category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65" , img: "../assets/img/tong_heng_logo.jpg"},
-                lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe", 
-                category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},*/
-                
                 {lat: 1.317290, lng: 103.832748, name: "HOME", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},
+                phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},*/
+
+                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe", 
+                category: "tea", hours: "10am - 6pm", description: "SOBBB", 
+                phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},
+                
                 {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},
