@@ -4,7 +4,7 @@ angular.module('TrailCtrl', ['appConstants'])
     document.getElementById("body_content").setAttribute('class', '');
     
     $(document).ready(function() {
-        
+
         /*if (hasGetUserMedia()) {
             // Good to go!
         } else {
@@ -46,6 +46,9 @@ angular.module('TrailCtrl', ['appConstants'])
             markers: [],
             watchPosition: {}
         }
+
+        vm.read_once = 0;
+
         vm.data = {
             locations: [
                 /*{{lat: 1.281035, lng: 103.840953, name: "Singapore Kong Chow Wui Koon", address: "321 New Bridge Rd, Singapore", icon: "cafe",
@@ -56,11 +59,11 @@ angular.module('TrailCtrl', ['appConstants'])
                 phone: "+65" , img: "../assets/img/tong_heng_logo.jpg"},*/
                 {lat: 1.317290, lng: 103.832748, name: "HOME", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 6604 8858" , img: "../assets/img/thye moh chan.png"},
+                phone: "+65 6604 8858" , img: "../assets/img/tong_heng_logo.png"},
 
-                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "31 Victoria St, Singapore 187997", icon: "cafe", 
+                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "285 South Bridge Rd, 058833", icon: "cafe", 
                 category: "tea", hours: "10am - 6pm", description: "SOBBB", 
-                phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},
+                phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},
                 
                 {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
@@ -112,15 +115,14 @@ angular.module('TrailCtrl', ['appConstants'])
     vm.onQRReaderError = onQRReaderError;
     vm.onVideoError = onVideoError;
 
-    var read_once = 0;
     function onQRReaderSuccess(data) {
         console.log("S ", data)
         
         //if(data == vm.location.name && read_once == 0){
-        if(read_once == 0){
+        if(vm.read_once == 0){
             $('#info_modal').modal('close');
  
-            read_once++;
+            vm.read_once++;
 
             $('.location-collapse').sideNav({
                 menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
@@ -128,8 +130,6 @@ angular.module('TrailCtrl', ['appConstants'])
                 closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
             $('.location-collapse').sideNav('show');
-        }else{
-            $('#qr_error').val("Invalid Code")
         }
     }
 
@@ -226,6 +226,75 @@ angular.module('TrailCtrl', ['appConstants'])
                         vm.location.description  = result[1].description.description 
                         vm.location.img = result[1].description.img 
                         vm.location.hours = result[1].description.hours 
+
+                        var video = document.createElement("video");
+                        var canvasElement = document.getElementById("canvas");
+                        var canvas = canvasElement.getContext("2d");
+                        var loadingMessage = document.getElementById("loadingMessage");
+                        var outputContainer = document.getElementById("output");
+                        var outputMessage = document.getElementById("outputMessage");
+                        var outputData = document.getElementById("outputData");
+
+                        function drawLine(begin, end, color) {
+                        canvas.beginPath();
+                        canvas.moveTo(begin.x, begin.y);
+                        canvas.lineTo(end.x, end.y);
+                        canvas.lineWidth = 4;
+                        canvas.strokeStyle = color;
+                        canvas.stroke();
+                        }
+
+                        // Use facingMode: environment to attemt to get the front camera on phones
+                        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+                        video.srcObject = stream;
+                        video.setAttribute("playsinline", false); // required to tell iOS safari we don't want fullscreen
+                        video.play();
+                        requestAnimationFrame(tick);
+                        });
+
+                        function tick() {
+                            loadingMessage.innerText = "⌛ Loading video..."
+                            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                                loadingMessage.hidden = true;
+                                canvasElement.hidden = false;
+                                outputContainer.hidden = false;
+
+                                canvasElement.height = 250//video.videoHeight;
+                                canvasElement.width = 250//video.videoWidth;
+                                canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+                                var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                                var code = jsQR(imageData.data, imageData.width, imageData.height);
+                                if (code && vm.read_once == 0) {
+                                    drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+                                    drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+                                    drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+                                    drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+                                    outputMessage.hidden = true;
+                                    outputData.parentElement.hidden = false;
+                                    outputData.innerText = code.data;
+
+                                    console.log("QR " + code.data)
+                                    if(vm.read_once == 0){
+                                        
+                                        console.log("OPENNN ME")
+                                        $('#info_modal').modal('close');
+                            
+                                        vm.read_once++;
+
+                                        $('.location-collapse').sideNav({
+                                            menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
+                                            edge: 'right', // Choose the horizontal origin
+                                            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                                        });
+                                        $('.location-collapse').sideNav('show');
+                                    }
+                                } else {
+                                    outputMessage.hidden = false;
+                                    outputData.parentElement.hidden = true;
+                                }
+                            }
+                            requestAnimationFrame(tick);
+                        }
 
                         $('.modal').modal();
                         $('#info_modal').modal('open');
