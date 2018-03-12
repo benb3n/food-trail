@@ -59,10 +59,10 @@ angular.module('TrailCtrl', ['appConstants'])
                 phone: "+65" , img: "../assets/img/tong_heng_logo.jpg"},*/
                 {lat: 1.317290, lng: 103.832748, name: "HOME", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 6604 8858" , img: "../assets/img/tong_heng_logo.png"},
+                phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},
 
                 {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "285 South Bridge Rd, 058833", icon: "cafe", 
-                category: "tea", hours: "10am - 6pm", description: "SOBBB", 
+                category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},
                 
                 {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
@@ -111,37 +111,16 @@ angular.module('TrailCtrl', ['appConstants'])
     vm.getRoute = getRoute;
     vm.submitQuiz = submitQuiz;
     vm.closeModal = closeModal;
-    vm.onQRReaderSuccess = onQRReaderSuccess;
-    vm.onQRReaderError = onQRReaderError;
-    vm.onVideoError = onVideoError;
+    vm.uploadQR = uploadQR;
 
-    function onQRReaderSuccess(data) {
-        console.log("S ", data)
-        
-        //if(data == vm.location.name && read_once == 0){
-        if(vm.read_once == 0){
-            $('#info_modal').modal('close');
- 
-            vm.read_once++;
+    var fileInput = document.getElementById("file_input_file");
+    fileInput.addEventListener('change', uploadQR);
+    function uploadQR(){
+        var file = document.getElementById('file_input_file').files[0];
+        var code = jsQR(file, 250, 250);
 
-            $('.location-collapse').sideNav({
-                menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
-                edge: 'right', // Choose the horizontal origin
-                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            });
-            $('.location-collapse').sideNav('show');
-        }
+        console.log(code)
     }
-
-    function onQRReaderError(error){
-        console.log("E ", data)
-        $('#qr_error').val("Invalid Code " + error)
-        alert(error)
-    }
-
-    function onVideoError(error) {
-        alert(error);
-    };
 
     function submitQuiz(){
         vm.map.watchPosition = navigator.geolocation.watchPosition(success, error, option);
@@ -149,7 +128,7 @@ angular.module('TrailCtrl', ['appConstants'])
     }
 
     function closeModal(){
-        read_once = 0;
+        vm.read_once = 0;
         $('.location-collapse').sideNav('hide');
     }
 
@@ -263,8 +242,9 @@ angular.module('TrailCtrl', ['appConstants'])
                                 canvasElement.width = 250//video.videoWidth;
                                 canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
                                 var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                                console.log(imageData)
                                 var code = jsQR(imageData.data, imageData.width, imageData.height);
-                                if (code && vm.read_once == 0) {
+                                if (code && code.data == "Tong Heng Pastries" && vm.read_once == 0) {
                                     drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
                                     drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
                                     drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
@@ -273,7 +253,6 @@ angular.module('TrailCtrl', ['appConstants'])
                                     outputData.parentElement.hidden = false;
                                     outputData.innerText = code.data;
 
-                                    console.log("QR " + code.data)
                                     if(vm.read_once == 0){
                                         
                                         console.log("OPENNN ME")
