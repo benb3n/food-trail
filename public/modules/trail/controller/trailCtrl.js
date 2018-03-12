@@ -4,17 +4,7 @@ angular.module('TrailCtrl', ['appConstants'])
     document.getElementById("body_content").setAttribute('class', '');
     
     $(document).ready(function() {
-        $('#reader').html5_qrcode(function(data){
-			$('#read').html(data);
-		},
-		function(error){
-            alert(error)
-            //$('#read_error').html(error);
-		}, function(videoError){
-            alert(videoError)
-            //$('#vid_error').html(videoError);
-		}
-	);
+        
         /*if (hasGetUserMedia()) {
             // Good to go!
         } else {
