@@ -60,7 +60,7 @@ angular.module('TrailCtrl', ['appConstants'])
                 {lat: 1.317290, lng: 103.832748, name: "HOME", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},*/
-
+                
                 {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "285 South Bridge Rd, 058833", icon: "cafe", 
                 category: "tea", hours: "10am - 10pm ", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},
@@ -197,7 +197,7 @@ angular.module('TrailCtrl', ['appConstants'])
               
                     });
 
-                    if(result[0] < 200){
+                    if(result[0] < 300){
                         navigator.geolocation.clearWatch(vm.map.watchPosition);
                         console.log(result[1])
                         vm.location = {};
@@ -253,7 +253,7 @@ angular.module('TrailCtrl', ['appConstants'])
                                     outputData.parentElement.hidden = false;
                                     outputData.innerText = code.data;
 
-                                    if(vm.read_once == 0){
+                                    
                                         
                                         console.log("OPENNN ME")
                                         $('#info_modal').modal('close');
@@ -266,7 +266,7 @@ angular.module('TrailCtrl', ['appConstants'])
                                             closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
                                         });
                                         $('.location-collapse').sideNav('show');
-                                    }
+                                    
                                 } else {
                                     outputMessage.hidden = false;
                                     outputData.parentElement.hidden = true;
