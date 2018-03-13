@@ -226,7 +226,7 @@ angular.module('TrailCtrl', ['appConstants'])
                         // Use facingMode: environment to attemt to get the front camera on phones
                         navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
                         video.srcObject = stream;
-                        video.setAttribute("playsinline", false); // required to tell iOS safari we don't want fullscreen
+                        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
                         video.play();
                         requestAnimationFrame(tick);
                         });
