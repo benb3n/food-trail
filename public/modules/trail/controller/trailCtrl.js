@@ -242,7 +242,7 @@ angular.module('TrailCtrl', ['appConstants'])
                                 canvasElement.width = 250//video.videoWidth;
                                 canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
                                 var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-                                console.log(imageData)
+                        
                                 var code = jsQR(imageData.data, imageData.width, imageData.height);
                                 if (code && code.data == "Tong Heng Pastries" && vm.read_once == 0) {
                                     drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
