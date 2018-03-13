@@ -56,10 +56,10 @@ angular.module('TrailCtrl', ['appConstants'])
                 phone: "+65 " , img: "../assets/img/tong_heng_logo.jpg"},
                 {lat: 1.283505, lng: 103.844348, name: "Chinatown Heritage Centre", address: "48 Pagoda St, Singapore 059207", icon: "restaurant", 
                 category: "tea", hours: "10am - 6pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65" , img: "../assets/img/tong_heng_logo.jpg"},*/
+                phone: "+65" , img: "../assets/img/tong_heng_logo.jpg"},
                 {lat: 1.317290, lng: 103.832748, name: "HOME", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},
+                phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},*/
 
                 {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "285 South Bridge Rd, 058833", icon: "cafe", 
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
