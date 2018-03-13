@@ -243,24 +243,26 @@ angular.module('TrailCtrl', ['appConstants'])
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
         var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
         var code = jsQR(imageData.data, imageData.width, imageData.height);
-        if (code && code.data == "Tong Heng Pastries" && vm.read_once == 0) {
-            drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
-            drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
-            drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
-            drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-            outputMessage.hidden = true;
-            outputData.parentElement.hidden = false;
-            outputData.innerText = code.data;
+        
+        if (code) {
+            if(code.data == "Tong Heng Pastries" && vm.read_once == 0){
+                drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+                drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+                drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+                drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+                outputMessage.hidden = true;
+                outputData.parentElement.hidden = false;
+                outputData.innerText = code.data;
 
-            vm.read_once++;
-            $('#info_modal').modal('close');
-            $('.location-collapse').sideNav({
-                menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
-                edge: 'right', // Choose the horizontal origin
-                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            });
-            $('.location-collapse').sideNav('show');
-
+                vm.read_once++;
+                $('#info_modal').modal('close');
+                $('.location-collapse').sideNav({
+                    menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
+                    edge: 'right', // Choose the horizontal origin
+                    closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                });
+                $('.location-collapse').sideNav('show');
+            }
 
         } else {
           outputMessage.hidden = false;

@@ -20,9 +20,7 @@
         <div class="modal-content" style="text-align: center">
             <h5>Find a QR Code</h5>
 
-            <input type="file" accept="image/*;capture=camera" >
-
-            <div class="file-field input-field">
+                <div class="file-field input-field">
                 <div class="btn">
                     <i class="material-icons">camera_alt</i>
                   <input type="file" accept="image/*;capture=camera"  id="file_input_file">
@@ -35,7 +33,7 @@
             </br>
             
             <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
-            <canvas id="canvas" hidden></canvas>
+            <canvas id="canvas" hidden data-activates="slide-out" class="location-collapse"></canvas>
             <div id="output" hidden>
                 <div id="outputMessage">No QR code detected.</div>
                 <div hidden><b>Data:</b> <span id="outputData"></span></div>
