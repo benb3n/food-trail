@@ -234,6 +234,7 @@ angular.module('TrailCtrl', ['appConstants'])
                         function tick() {
                             loadingMessage.innerText = "⌛ Loading video..."
                             if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                                loadingMessage.innerText = "⌛ HIHI"
                                 loadingMessage.hidden = true;
                                 canvasElement.hidden = false;
                                 outputContainer.hidden = false;
