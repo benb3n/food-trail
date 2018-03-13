@@ -62,7 +62,7 @@ angular.module('TrailCtrl', ['appConstants'])
                 phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},*/
 
                 {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "285 South Bridge Rd, 058833", icon: "cafe", 
-                category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                category: "tea", hours: "10am - 10pm ", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},
                 
                 {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
