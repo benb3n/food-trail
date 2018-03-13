@@ -206,7 +206,7 @@ angular.module('TrailCtrl', ['appConstants'])
                         vm.location.img = result[1].description.img 
                         vm.location.hours = result[1].description.hours 
 
-                        var video = document.createElement("video");
+                        /*var video = document.createElement("video");
                         var canvasElement = document.getElementById("canvas");
                         var canvas = canvasElement.getContext("2d");
                         var loadingMessage = document.getElementById("loadingMessage");
@@ -274,7 +274,7 @@ angular.module('TrailCtrl', ['appConstants'])
                                 }
                             }
                             requestAnimationFrame(tick);
-                        }
+                        }*/
 
                         $('.modal').modal();
                         $('#info_modal').modal('open');
