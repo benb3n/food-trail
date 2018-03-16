@@ -32,6 +32,11 @@
 
             </br>
             
+            <a-scene embedded artoolkit='sourceType: webcam;'>
+                <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+                <a-marker-camera preset='hiro'></a-marker-camera>
+            </a-scene>
+
             <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
             <canvas id="canvas" hidden data-activates="slide-out" class="location-collapse"></canvas>
             <div id="output" hidden>
@@ -55,25 +60,26 @@
 
     <ul id="slide-out" class="side-nav">
         <div class="sidebar-background" style="background-image: url(../assets/img/cny_sidebar.jpeg) "></div>
-        <div class="sidebar-logo">
-            <i class='material-icons ' ng-click="trail.closeModal()">close</i>
             <div class="sidebar-logo">
-                <p class="simple-text">{{trail.location.name}}</p>
-            </div>
-            <div style="margin:5px; text-align:center">
-                <img  width='80px' src="{{trail.location.img}}">
-            </div>
-            <div style="margin:5px">
-                <p class="white-text">{{trail.location.description}}</p>
-            </div>
-            <div style="margin:5px">
+                <i class='material-icons ' ng-click="trail.closeModal()">close</i>
+                <div class="sidebar-logo">
+                    <p class="simple-text">{{trail.location.name}}</p>
+                </div>
+                
+                <div style="margin:5px; text-align:center">
+                    <img  width='80px' src="{{trail.location.img}}">
+                </div>
+                <div style="margin:5px">
+                    <p class="white-text">{{trail.location.description}}</p>
+                </div>
+                <div style="margin:5px">
                     <p class="white-text">Opening Hour</p>
-                <p class="white-text">{{trail.location.hours}}</p>
-            </div>
-            <div>
-                    <div class="fb-share-button" data-href="http://food-trail.herokuapp.com/home" data-layout="button" data-size="small" data-mobile-iframe="true">
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffood-trail.herokuapp.com%2Fhome&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-                    </div>
+                    <p class="white-text">{{trail.location.hours}}</p>
+                </div>
+                <div>
+                <div class="fb-share-button" data-href="http://food-trail.herokuapp.com/home" data-layout="button" data-size="small" data-mobile-iframe="true">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffood-trail.herokuapp.com%2Fhome&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+                </div>
 
             </div>
         </div>
