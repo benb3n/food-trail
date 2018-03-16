@@ -9,11 +9,11 @@
 
 <div style="width:300px; height:300px">
     <a-scene embedded arjs='trackingMethod: best; debugUIEnabled: false;'>
-        <a-anchor hit-testing-enabled='true'>
+        <!--<<a-anchor hit-testing-enabled='true'>
                 
-            <!--<a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>-->
-        </a-anchor>
-        <a-assets>
+            a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+        </a-anchor>-->
+        <a-assets hit-testing-enabled='true'>
                 <video id="penguin-sledding" autoplay loop="true" src="assets/video/4k Free Timelapse - Singapore Chinatown traffic and lanterns.mp4"></video>
             </a-assets>
         <a-camera-static/>
