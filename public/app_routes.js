@@ -17,6 +17,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'GalleryController',
             controllerAs: "gallery"
         })
+        .when('/ar', {
+            templateUrl: 'modules/arvideo/views/arvideo.html',
+            controller: 'ArvideoController',
+            controllerAs: "arvideo"
+        })
 
 
         $locationProvider.html5Mode(true);
