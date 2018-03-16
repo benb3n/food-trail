@@ -5,6 +5,7 @@ angular.module('ChineseBiz', [
     'HomeCtrl',
     'TrailCtrl',
     'GalleryCtrl',
+    'ArvideoCtrl',
     'ngMap'
 
 ])
