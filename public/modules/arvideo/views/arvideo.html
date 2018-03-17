@@ -7,12 +7,27 @@
     </a-scene>
 </div>-->
 
+<!--<div style="width:300px; height:300px">
+    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled: false; sourceType: webcam;'>
+            <a-video id="inputVideo" src="bunny.mp4" width="2" height="2" position="0 0 0" webkit-playsinline playsinline controls></a-video> 
+                <a-assets>
+                        <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+                    <video id="video" preload="none" poster="xxxxxxx" src="bunny.mp4"></video>
+                </a-assets>
+       
+        <a-camera-static/>
+    </a-scene>
+                        
+       
+</div>-->
+
 <!-- add arjs into your scene -->
-<a-scene arjs artoolkit>
+<a-scene arjs='debugUIEnabled: false;' artoolkit>
         <!-- define a marker -->
         <a-anchor>
-                <!-- define the content to be displayed on top of the marker -->
-                <a-box color="#2EAFAC"></a-box>
+                <!-- define the content to be displayed on top of the marker 
+                <a-box color="#2EAFAC"></a-box>-->
+                <video id="video" preload="none" poster="xxxxxxx" src="bunny.mp4" webkit-playsinline playsinline></video>
         </a-anchor>
         <!-- define a simple camera -->
         <a-camera-static/>
