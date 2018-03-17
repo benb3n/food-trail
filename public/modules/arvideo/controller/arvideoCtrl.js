@@ -20,7 +20,7 @@ angular.module('ArvideoCtrl', [])
 
     initController();
     function initController(){
-        AFRAME.registerComponent('artoolkit', { init: function () { 
+        /*AFRAME.registerComponent('artoolkit', { init: function () { 
             var sceneEl = document.querySelector('a-scene').querySelector('a-assets'); 
             var video = sceneEl.querySelector('video'); 
             //var canvas = document.getElementsByClassName('a-assets'); 
@@ -32,7 +32,25 @@ angular.module('ArvideoCtrl', [])
                 //    video.pause(); 
                 //} 
             //}, false); 
-        } });
+        } });*/
+        /*AFRAME.registerComponent('yeah', { init: function () { 
+            this.el.addEventListener('click', function (evt) { 
+                //console.log ("CLICK ON CURSOR LISTENER"); 
+                alert("CLICK ME")
+                var sceneEl = document.querySelector('a-scene').querySelector('a-assets'); 
+                var video = sceneEl.querySelector('video'); 
+                video.play(); 
+                //lightning.play(); 
+            }); 
+        } });*/
+        var vid = document.getElementById('video');
+        console.log(vid);
+
+        document.getElementById('play-button').addEventListener("click", function(e){
+        this.style.display = 'none';
+        vid.play();
+        }, false);
+
     }
 
 })

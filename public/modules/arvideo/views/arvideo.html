@@ -20,7 +20,17 @@
                         
        
 </div>-->
-
+<style>
+#play-button {
+    position: fixed;
+    top: calc(50% - 1em);
+    left: calc(50% - 2em);
+    width: 4em;
+    height: 2em;
+    z-index: 10;
+  }
+  </style>
+<button id="play-button">Play</button>
 <!-- add arjs into your scene -->
 <a-scene arjs artoolkit auto-enter-vr="display:all">
         <a-assets>
@@ -30,7 +40,8 @@
         <a-anchor hit-testing-enabled='true'>
                 <!-- define the content to be displayed on top of the marker 
                 <a-box color="#2EAFAC"></a-box>-->
-                <a-video id="inputVideo" visible="true" yeah autoplay="true" class="video" src="#video" webkit-playsinline playsinline width="5" height="5" position="0 0 0" rotation="0 0 0"></a-video> 
+                <a-video id="inputVideo" visible="true" yeah autoplay="true" class="video" src="#video" webkit-playsinline playsinline 
+                width="5" height="5" material="shader: flat; src: #video;"></a-video> 
         </a-anchor>
         <!-- define a simple camera -->
         <a-camera-static/>
