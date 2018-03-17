@@ -22,11 +22,9 @@
 </div>-->
 
 <!-- add arjs into your scene -->
-<a-scene arjs artoolkit>
+<a-scene arjs artoolkit auto-enter-vr="display:all">
         <a-assets>
-                <video preload="auto"  autoplay="true" id="video" loop="false" webkit-playsinline playsinline controls muted>
-                        <source src="bunny.mp4" type="video/mp4"/> // At least one source
-                    </video>
+            <video preload="auto"  autoplay="true" id="video" loop="false" ource src="assets/video/bunny.mp4" type="video/mp4" webkit-playsinline playsinline controls muted></video>
         </a-assets>
         <!-- define a marker -->
         <a-anchor>
