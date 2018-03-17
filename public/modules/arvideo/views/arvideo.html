@@ -8,11 +8,12 @@
 </div>-->
 
 <div style="width:300px; height:300px">
-    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled: false;'>
-            <a-video id="inputVideo" src="bunny.mp4" width="2" height="2" position="0 0 0" webkit-playsinline playsinline controls></a-video> 
-        <!--<video preload="auto"  autoplay="true" id="my-video-1" loop="false" webkit-playsinline playsinline controls muted>
-            <source src="bunny.mp4" type="video/mp4"/> // At least one source
-        </video>-->
+    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled: false; sourceType: webcam;'>
+            <!--<a-video id="inputVideo" src="bunny.mp4" width="2" height="2" position="0 0 0" webkit-playsinline playsinline controls></a-video> -->
+                <a-assets>
+                    <video id="video" preload="none" poster="xxxxxxx" src="bunny.mp4"></video>
+                </a-assets>
+       
         <a-camera-static/>
     </a-scene>
                         
