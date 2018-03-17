@@ -180,6 +180,15 @@ nav .brand-logo {
     margin-bottom: 0 !important;
 }
 
+#play-button {
+  position: fixed;
+  top: calc(50% - 1em);
+  left: calc(50% - 2em);
+  width: 4em;
+  height: 2em;
+  z-index: 10;
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .brand-title{
