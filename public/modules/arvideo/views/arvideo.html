@@ -23,6 +23,11 @@
 
 <!-- add arjs into your scene -->
 <a-scene arjs artoolkit>
+        <a-assets>
+                <video preload="auto"  autoplay="true" id="video" loop="false" webkit-playsinline playsinline controls muted>
+                        <source src="bunny.mp4" type="video/mp4"/> // At least one source
+                    </video>
+        </a-assets>
         <!-- define a marker -->
         <a-anchor>
                 <!-- define the content to be displayed on top of the marker 
@@ -33,6 +38,4 @@
         <a-camera-static/>
 </a-scene>
 
-<video preload="auto"  autoplay="true" id="video" loop="false" webkit-playsinline playsinline controls muted>
-    <source src="bunny.mp4" type="video/mp4"/> // At least one source
-</video>
+
