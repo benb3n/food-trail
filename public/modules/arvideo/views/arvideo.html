@@ -27,9 +27,12 @@
         <a-anchor>
                 <!-- define the content to be displayed on top of the marker 
                 <a-box color="#2EAFAC"></a-box>-->
-                <a-video id="inputVideo" autoplay loop="true" src="example.mp4" width="3" height="3" position="0 0 0" rotation="0 0 0" webkit-playsinline playsinline></a-video> 
+                <a-video id="inputVideo" visible="true" yeah class="video" src="#video" webkit-playsinline playsinline width=1 height=1 position="0 0 0" rotation="0 0 2" autoplay="true"></a-video> 
         </a-anchor>
         <!-- define a simple camera -->
         <a-camera-static/>
 </a-scene>
 
+<video preload="auto"  autoplay="true" id="video" loop="false" webkit-playsinline playsinline controls muted>
+    <source src="bunny.mp4" type="video/mp4"/> // At least one source
+</video>
