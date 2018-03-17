@@ -20,9 +20,9 @@ angular.module('ArvideoCtrl', [])
 
     initController();
     function initController(){
-        AFRAME.registerComponent('yeah', { init: function () { 
+        /*AFRAME.registerComponent('yeah', { init: function () { 
             this.el.addEventListener('click', function (evt) { console.log ("CLICK ON CURSOR LISTENER"); //lightning.play(); 
-        }); } })
+        }); } })*/
     }
 
 })
