@@ -20,9 +20,18 @@ angular.module('ArvideoCtrl', [])
 
     initController();
     function initController(){
-        /*AFRAME.registerComponent('yeah', { init: function () { 
-            this.el.addEventListener('click', function (evt) { console.log ("CLICK ON CURSOR LISTENER"); //lightning.play(); 
-        }); } })*/
+        AFRAME.registerComponent('artoolkit', { init: function () { 
+            var sceneEl = document.querySelector('a-scene').querySelector('a-assets'); 
+            var video = sceneEl.querySelector('video'); 
+            var canvas = document.getElementsByClassName('a-canvas'); 
+            canvas[0].addEventListener('click', function () { console.log("YEAH HERE NOW") 
+                if (video.paused == true) { 
+                     video.play(); 
+                } else {  
+                    video.pause(); 
+                } 
+            }, false); 
+        } });
     }
 
 })
