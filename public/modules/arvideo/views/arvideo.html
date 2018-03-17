@@ -25,6 +25,8 @@
 <!-- add arjs into your scene -->
 <a-scene arjs artoolkit auto-enter-vr="display:all">
         <a-assets>
+            <button id="video-play-image">Play</button>
+            <button id="video-pause-image">Play</button>
             <video preload="auto"  autoplay="true" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" webkit-playsinline playsinline  ></video>
         </a-assets>
         <!-- define a marker -->
@@ -32,7 +34,7 @@
             <!-- define the content to be displayed on top of the marker 
             <a-box color="#2EAFAC"></a-box>-->
             <a-video id="inputVideo" visible="true" yeah autoplay="true" class="video" src="#video" webkit-playsinline playsinline 
-            width="3" height="3" material="shader: flat; src: #video;"></a-video> 
+            width="3" height="3" rotation="0 180 0" material="shader: flat; src: #video;"></a-video> 
         </a-anchor>
         <!-- define a simple camera -->
         <a-camera-static/>
