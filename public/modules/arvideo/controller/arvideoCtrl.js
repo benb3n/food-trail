@@ -46,9 +46,16 @@ angular.module('ArvideoCtrl', [])
         var vid = document.getElementById('video');
         console.log(vid);
 
+        document.getElementById('play-button').style.visibility = 'hidden'
         document.getElementById('play-button').addEventListener("click", function(e){
-        this.style.display = 'none';
-        vid.play();
+            this.style.visibility = 'hidden';
+            document.getElementById('pause-button').style.display = "visible"
+            vid.play();
+        }, false);
+        document.getElementById('pause-button').addEventListener("click", function(e){
+            this.style.visibility = 'hidden';
+            document.getElementById('play-button').style.display = "visible"
+            vid.pause();
         }, false);
 
     }
