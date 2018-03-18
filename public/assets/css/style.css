@@ -14,7 +14,8 @@ body, html{
 }
 .brand-title{
   color:white; 
-  font-weight:200
+  font-weight:600;
+  font-family: 'Poiret One', cursive;
 }
 
 .carousel-item{

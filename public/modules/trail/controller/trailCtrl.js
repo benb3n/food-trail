@@ -61,10 +61,14 @@ angular.module('TrailCtrl', ['appConstants'])
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},*/
                 
-                {lat: 1.295258, lng: 103.850578, name: "SMU SOB", address: "285 South Bridge Rd, 058833", icon: "cafe", 
-                category: "tea", hours: "10am - 10pm ", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
-                phone: "+65 62233649" , img: "../assets/img/tong_heng_logo.jpg"},
+                //SOB Coorindates
+                {lat: 1.295258, lng: 103.850578, name: "Eu Yan Sang", address: "273 South Bridge Rd, Singapore 058822", icon: "cafe", 
+                category: "tea", hours: "Mon - Fri (8.30am - 6pm) ", description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
+                phone: "+65 62233649" , img: "../assets/img/eu_yang_sang.png"},
                 
+                {lat: 1.28187, lng: 103.8452, name: "Eu Yan Sang", address: "273 South Bridge Rd, Singapore 058822", icon: "cafe",
+                category: "tea", hours: "Mon - Fri (8.30am - 6pm)", description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
+                phone: "+65 " , img: "../assets/img/eu_yang_sang.png"},
                 {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 66048858" , img: "../assets/img/thye moh chan.png"},
@@ -74,7 +78,6 @@ angular.module('TrailCtrl', ['appConstants'])
                 {lat: 1.280222, lng: 103.843555, name: "Tea Chapter Trading Pte Ltd", address: "9 & 11 Neil Road, Singapore 088808", icon: "cafe",
                 category: "tea", hours: "11am - 9pm", description: "Dedicated to the education on Chinese Tea Appreciation, as well as the highest levels of service standards.", 
                 phone: "+65 62261175" , img: "../assets/img/tea_chapter_logo.png"},
-
                 {lat: 1.281951, lng: 103.8439, name: "Tai Chong Kok", address: "34 Sago St, Singapore 059026", icon: "cafe",
                 category: "tea", hours: "", description: "", 
                 phone: "+65 " , img: "../assets/img/tea_chapter_logo.png"},
