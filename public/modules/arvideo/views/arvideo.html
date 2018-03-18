@@ -32,11 +32,13 @@
         <a-anchor hit-testing-enabled='true'>
             <!-- define the content to be displayed on top of the marker 
             <a-box color="#2EAFAC"></a-box>-->
+            <a-sky>
             <a-video id="inputVideo" visible="true" yeah autoplay="true" class="video" src="#video" webkit-playsinline playsinline 
             width="4" height="1" position="0 0 0" rotation="0 0 180"  material="shader: flat; src: #video;" scale="-1 1 1">
                 <button id="play-button"><i class="material-icons">play_arrow</i></button>
                 <button id="pause-button"><i class="material-icons">pause</i></button>
-            </a-video> 
+            </a-video>
+            </a-sky> 
         </a-anchor>
         <!-- define a simple camera -->
         <a-camera-static/>
