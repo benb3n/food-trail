@@ -44,7 +44,8 @@ angular.module('TrailCtrl', ['appConstants'])
             directionsService: {},
             directionsDisplay: {},
             markers: [],
-            watchPosition: {}
+            watchPosition: {},
+            geocoder:{}
         }
 
         vm.read_once = 0;
@@ -92,6 +93,7 @@ angular.module('TrailCtrl', ['appConstants'])
 
             google.maps.event.trigger(map, "resize");
 
+            vm.map.geocoder = new google.maps.Geocoder();
             vm.map.directionsService = new google.maps.DirectionsService;
             vm.map.directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions:{strokeColor:"#4a4a4a",strokeWeight:3}});
             vm.map.infoWindow = new google.maps.InfoWindow;
