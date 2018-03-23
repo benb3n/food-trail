@@ -21,28 +21,58 @@
        
 </div>-->
 
+<button id="play-button">Play</button>
 
-<!-- add arjs into your scene -->
+<a-scene id="vr-scene">
+  <a-camera 
+    id="camera"
+    position="0 1.8 4"
+    cursor-visible="true"
+    cursor-scale="2" 
+    cursor-color="#000000" 
+    cursor-offset="2" 
+    cursor-maxdistance="100"
+    cursor-opacity="0.7"></a-camera>
+ 
+  <a-assets>
+    <video id="vid" src="https://ucarecdn.com/bcece0a8-86ce-460e-856b-40dac4875f15/"
+    crossOrigin="anonymous"
+    autoplay="false"
+    loop="true"
+    style="display: none"></video>
+  </a-assets>
+ 
+  <a-entity geometry="primitive: sphere;
+                      radius: 5000;
+                      segmentsWidth: 64;
+                      segmentsHeight: 64;"
+            material="shader: flat; src: #vid;"
+            scale="-1 1 1">
+  </a-entity>
+
+</a-scene>
+
+<!-- add arjs into your scene 
 <a-scene arjs artoolkit auto-enter-vr="display:all">
         <a-assets>
 
             <video preload="auto"  autoplay="true" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" webkit-playsinline playsinline  ></video>
-        </a-assets>
-        <!-- define a marker -->
-        <a-anchor hit-testing-enabled='true'>
+        </a-assets>-->
+        <!-- define a marker 
+        <a-anchor hit-testing-enabled='true'>-->
             <!-- define the content to be displayed on top of the marker 
-            <a-box color="#2EAFAC"></a-box>-->
+            <a-box color="#2EAFAC"></a-box>-
     
             <a-video id="inputVideo" visible="true" yeah autoplay="true" class="video" src="#video" webkit-playsinline playsinline 
             width="4" height="1" position="0 0 0" rotation="0 360 180"  material="shader: flat; src: #video;" scale="-1 1 1">
                 <button id="play-button"><i class="material-icons">play_arrow</i></button>
                 <button id="pause-button"><i class="material-icons">pause</i></button>
-            </a-video>
+            </a-video>->
 
     
         </a-anchor>
-        <!-- define a simple camera -->
+        <!-- define a simple camera -
         <a-camera-static/>
-</a-scene>
+</a-scene>->
 
 

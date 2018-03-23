@@ -64,23 +64,33 @@ angular.module('TrailCtrl', ['appConstants'])
                 
                 //SOB Coorindates
                 {lat: 1.295258, lng: 103.850578, name: "Eu Yan Sang", address: "273 South Bridge Rd, Singapore 058822", icon: "cafe", 
-                category: "tea", hours: "Mon - Fri (8.30am - 6pm) ", description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
+                category: "tea", hours: "Mon - Fri (8.30am - 6pm) ", 
+                description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
                 phone: "+65 62233649" , img: "../assets/img/eu_yang_sang.png"},
                 
                 {lat: 1.28187, lng: 103.8452, name: "Eu Yan Sang", address: "273 South Bridge Rd, Singapore 058822", icon: "cafe",
-                category: "tea", hours: "Mon - Fri (8.30am - 6pm)", description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
-                phone: "+65 " , img: "../assets/img/eu_yang_sang.png"},
-                {lat: 1.284836, lng: 103.844361, name: "Thye Moh Chan", address: "133 New Bridge Road, #01-45 Chinatown Point, Singapore 059413", icon: "cafe",
-                category: "tea", hours: "10am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+                category: "tcm", hours: "Monday, Tuesday, Thursday & Friday: 8:30am - 6pm Wednesday: 9am - 6pm Saturday: 8:30am - 7:30pm", 
+                description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
+                phone: "+65 6223 5085" , img: "../assets/img/eu_yang_sang.png"},
+
+                {lat: 1.284836, lng: 103.844361, name: "Pek Sin Choon", address: "36 Mosque St, Singapore 059514", icon: "cafe",
+                category: "tea", hours: "10am - 10pm", 
+                description: "The company was established in 1925, and is one of the oldest tea merchant in Singapore. One of the few in Singapore which blended their own tea leaves using the traditional style", 
                 phone: "+65 66048858" , img: "../assets/img/thye moh chan.png"},
-                {lat: 1.281615, lng: 103.844961, name: "Tong Heng Pastries", address: "285 South Bridge Rd, 058833", icon: "cafe",
-                category: "patisserie", hours: "9am - 10pm", description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
+
+                {lat: 1.281615, lng: 103.844961, name: "Tong Heng", address: "285 South Bridge Rd, 058833", icon: "cafe",
+                category: "patisserie", hours: "9am - 10pm", 
+                description: "Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.", 
                 phone: "+65 62233649", img: "../assets/img/tong_heng_logo.jpg"},
-                {lat: 1.280222, lng: 103.843555, name: "Tea Chapter Trading Pte Ltd", address: "9 & 11 Neil Road, Singapore 088808", icon: "cafe",
-                category: "tea", hours: "11am - 9pm", description: "Dedicated to the education on Chinese Tea Appreciation, as well as the highest levels of service standards.", 
-                phone: "+65 62261175" , img: "../assets/img/tea_chapter_logo.png"},
-                {lat: 1.281951, lng: 103.8439, name: "Tai Chong Kok", address: "34 Sago St, Singapore 059026", icon: "cafe",
-                category: "tea", hours: "", description: "", 
+
+                {lat: 1.280222, lng: 103.843555, name: "Lian He Ben Ji Claypot Rice", address: "335 Smith Street, Chinatown Complex, Singapore 050335", icon: "cafe",
+                category: "tea", hours: "4:30pm - 10:30pm, Closed on Thursdays", 
+                description: "Started back in 1979, one of the rare few places that still cook over charcoal fire", 
+                phone: "+65 6227 2470" , img: "../assets/img/tea_chapter_logo.png"},
+                
+                {lat: 1.281951, lng: 103.8439, name: "Toh Kee Roast Duck", address: "34 Sago St, Singapore 059026", icon: "cafe",
+                category: "food", hours: "10:30am to 7pm, Closed on mondays", 
+                description: "One of Singapore's most famous roast duck, their roast duck is made with a more unique dark colour than other stalls, made by an antique brick linen oven", 
                 phone: "+65 " , img: "../assets/img/tea_chapter_logo.png"},
             ],
             locations_by_name:{}
