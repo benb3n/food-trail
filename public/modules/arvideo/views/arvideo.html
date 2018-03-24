@@ -51,11 +51,19 @@
 
 </a-scene>-->
 
-<!--<a-scene environment="preset: starry" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
+<a-scene environment="preset: starry" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
     <a-assets>
+        <video preload="auto"  autoplay="false" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" webkit-playsinline playsinline  ></video>
+    </a-assets>
       
     <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg" crossorigin="anonymous"></a-assets>
     
+    <a-video id="inputVideo" visible="true" yeah autoplay="false" class="video" src="#video" webkit-playsinline playsinline 
+            width="7" height="5" position="5 5 -5" rotation="0 0 0"  material="shader: flat; src: #video;" >
+        <button id="play-button"><i class="material-icons">play_arrow</i></button>
+        <button id="pause-button"><i class="material-icons">pause</i></button>
+    </a-video>
+
     <a-box position="0 2 -5" rotation="0 45 45" scale="2 2 2" src="#boxTexture" visible="" material="" geometry="">
       <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite" to="0 2.2 -5"></a-animation>
       <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
@@ -65,9 +73,9 @@
 
     <a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
     <a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>
-</a-scene>-->
+</a-scene>
 
-<a-scene>
+<!--<a-scene>
     <a-sky src="#video" >
             <button id="play-button"><i class="material-icons">play_arrow</i></button>
             <button id="pause-button"><i class="material-icons">pause</i></button>
@@ -87,7 +95,7 @@
 
     <a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
     <a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>
-</a-scene>
+</a-scene>-->
 
 <!-- add arjs into your scene 
 <a-scene arjs artoolkit auto-enter-vr="display:all">
