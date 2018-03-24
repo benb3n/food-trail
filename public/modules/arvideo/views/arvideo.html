@@ -21,7 +21,6 @@
        
 </div>-->
 
-<button id="play-button">Play</button>
 
 <!--<a-scene id="vr-scene">
   <a-camera 
@@ -69,7 +68,10 @@
 </a-scene>-->
 
 <a-scene>
-    <a-sky src="#video" ></a-sky>>
+    <a-sky src="#video" >
+            <button id="play-button"><i class="material-icons">play_arrow</i></button>
+            <button id="pause-button"><i class="material-icons">pause</i></button>
+    </a-sky>>
     <a-assets>
         <video preload="auto"  autoplay="true" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" webkit-playsinline playsinline  ></video>
     </a-assets>
