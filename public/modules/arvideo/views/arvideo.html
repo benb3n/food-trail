@@ -23,8 +23,8 @@
 
 <button id="play-button">Play</button>
 
-<a-scene id="vr-scene">
-  <!--<a-camera 
+<!--<a-scene id="vr-scene">
+  <a-camera 
     id="camera"
     position="0 1.8 4"
     cursor-visible="true"
@@ -32,7 +32,7 @@
     cursor-color="#000000" 
     cursor-offset="2" 
     cursor-maxdistance="100"
-    cursor-opacity="0.7"></a-camera>-->
+    cursor-opacity="0.7"></a-camera>
  
   <a-assets>
     <video id="vid" src="https://ucarecdn.com/bcece0a8-86ce-460e-856b-40dac4875f15/"
@@ -50,7 +50,21 @@
             scale="-1 1 1">
   </a-entity>
 
-</a-scene>
+</a-scene>-->
+
+<a-scene environment="preset: forest" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
+    <a-assets>
+      
+    <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg" crossorigin="anonymous"></a-assets>
+    
+    <a-box position="0 2 -5" rotation="0 45 45" scale="2 2 2" src="#boxTexture" visible="" material="" geometry="">
+      <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite" to="0 2.2 -5"></a-animation>
+      <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+      <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+      <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+    </a-box>
+
+    <a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>
 
 <!-- add arjs into your scene 
 <a-scene arjs artoolkit auto-enter-vr="display:all">
