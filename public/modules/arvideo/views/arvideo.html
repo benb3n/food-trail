@@ -52,7 +52,7 @@
 
 </a-scene>-->
 
-<a-scene environment="preset: forest" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
+<!--<a-scene environment="preset: starry" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
     <a-assets>
       
     <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg" crossorigin="anonymous"></a-assets>
@@ -64,7 +64,26 @@
       <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
     </a-box>
 
+    <a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
     <a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>
+</a-scene>-->
+
+<a-scene>
+    <a-sky src="assets/video/Eu_Yan_Sang.mp4"></a-sky>>
+    <a-assets>
+      
+    <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg" crossorigin="anonymous"></a-assets>
+    
+    <a-box position="0 2 -5" rotation="0 45 45" scale="2 2 2" src="#boxTexture" visible="" material="" geometry="">
+      <a-animation attribute="position" direction="alternate" dur="2000" repeat="indefinite" to="0 2.2 -5"></a-animation>
+      <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+      <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+      <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+    </a-box>
+
+    <a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
+    <a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>
+</a-scene>
 
 <!-- add arjs into your scene 
 <a-scene arjs artoolkit auto-enter-vr="display:all">
