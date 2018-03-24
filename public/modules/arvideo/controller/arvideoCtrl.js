@@ -45,7 +45,7 @@ angular.module('ArvideoCtrl', [])
         } });*/
         
         
-        /*var vid = document.getElementById('video');
+        var vid = document.getElementById('video');
         console.log(vid);
 
         document.getElementById('pause-button').style.visibility = 'hidden'
@@ -58,7 +58,7 @@ angular.module('ArvideoCtrl', [])
             this.style.visibility = 'hidden';
             document.getElementById('play-button').style.visibility = "visible"
             vid.pause();
-        }, false);*/
+        }, false);
 
     }
 
