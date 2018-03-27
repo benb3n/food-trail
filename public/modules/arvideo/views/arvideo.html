@@ -55,14 +55,14 @@
 
 <!--<a-scene environment="preset: starry" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
     <a-assets>
-        <!--<video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" 
+        <video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" 
         crossorigin="anonymous" webkit-playsinline playsinline  ></video>
         <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg" crossorigin="anonymous">
         <a-mixin id="column" geometry="primitive: box; depth: .75; height: 1.2; width: .75" material="color: #FFF" position="0 .6 0"></a-mixin>
         <a-mixin id="column-bottom" geometry="primitive: box; depth: 1; height: .1; width: 1;" material="color: #FFF" position="0 .1 0"></a-mixin>
         <a-mixin id="object-on-column" position="0 1.2 0"></a-mixin>
     </a-assets>
--->
+
     <!--<a-video id="inputVideo" visible="true" yeah autoplay="false" class="video" src="#video" webkit-playsinline playsinline 
             width="5" height="3" position="0 2 -5" rotation="0 0 0"  
             material="shader: flat; src: #video;" >
@@ -107,29 +107,27 @@
 <!--</a-scene>-->
 
 
-<a-scene environment="preset: starry" stats="" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+<<a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
     <a-assets>
-        <a-mixin id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: .5;
-                                segmentsRadial: 50; segmentsHeight: 50:
-                                openEnded: true; thetaStart: 0; thetaLength: 360">
-        </a-mixin>
+        <a-mixin id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: .5;">                 
 
-        <a-mixin id="column" geometry="primitive: box; depth: .75; height: 1.2; width: .75" material="color: #FFF" position="0 .6 0"></a-mixin>
-        <a-mixin id="column-bottom" geometry="primitive: box; depth: 1; height: .1; width: 1;" material="color: #FFF" position="0 .1 0">
-        </a-mixin>
-        <a-mixin id="column-light" light="type: point; intensity: 0.5;
-                                                distance: 5;" position="0 1.5 0">
-        </a-mixin>
-        <a-mixin id="object-on-column" position="0 1.2 0"></a-mixin>
+        <a-mixin id="column" geometry="primitive: box; depth: .75; height: 2; width: .75" material="color: #FFF" position="0 .6 0"></a-mixin>
+        <a-mixin id="column-bottom" geometry="primitive: box; depth: 1; height: .3; width: 1;" material="color: #FFF" position="0 .1 0"></a-mixin>
+        <a-mixin id="column-light" light="type: point; intensity: 0.5; distance: 5;" position="0 1.5 0"></a-mixin>
         
+        <a-mixin id="object-on-column" position="0 1.2 0"></a-mixin>
+        <a-mixin id="spin" attribute="rotation" to="0 360 0" repeat="indefinite" easing="linear" dur="10000"></a-mixin>
+        <a-mixin id="spin-x" mixin="spin" attribute="rotation" to="360 0 0" repeat="indefinite" easing="linear" dur="10000"></a-mixin>
+        <a-mixin id="color" material="color: #FFFFC3"></a-mixin>
+        <a-mixin id="doubleside" material="side: double"></a-mixin>
 
+        <img id="product" src="assets/img/eu_yan_sang_bird_nest.png" crossorigin="anonymous">
         <img id="carpet" src="assets/img/carpet.jpg" crossorigin="anonymous">
         <img id="floor" src="assets/img/marble.jpg" crossorigin="anonymous">
     </a-assets>
     
     <a-entity light="type: ambient; color: #444" position="" rotation="" scale="" visible=""></a-entity>
-    <a-entity light="type: directional; color: #EEE" position="0 1 1" rotation="" scale="" visible="">
-    </a-entity>
+    <a-entity light="type: directional; color: #EEE" position="0 1 1" rotation="" scale="" visible=""></a-entity>
     
     <a-entity geometry="primitive: cylinder; height: .2; radius: 12;" material="color: #BABABA; src: #floor;
         metalness: .2; repeat: 50 20; roughness: .1" position="0 0 0" rotation="" scale="" visible="">
@@ -139,13 +137,18 @@
         repeat: 3 40; roughness: 1" position="0 .2 0" rotation="" scale="" visible="">
     </a-entity>
     
-    <a-entity position="-2.5 0 1" rotation="" scale="" visible="">
-        <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
-        <a-entity mixin="column-light" position="" rotation="" scale="" visible="" light=""></a-entity>
-        <a-entity mixin="object-on-column color box" position="" rotation="" scale="" visible="" material="" geometry="">
-        <a-animation mixin="spin" to="360 360 0"></a-animation>
-    </a-entity>
+  
 
+    
+    <a-entity position="-2.5 0 -2" rotation="" scale="" visible="">
+        <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
+            <a-entity mixin="column-light" position="" rotation="" scale="" visible="" light=""></a-entity>
+            <a-entity material="src: #product;" position="0 1.4 0" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.4; height: .4; width: 0.4">
+                    <a-animation mixin="spin"></a-animation>
+            </a-entity>
+        </a-entity>
+        <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
+    </a-entity>
     
     <!--<a-entity position="-10 0 -5" rotation="" scale="" visible="">
         <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
@@ -166,7 +169,7 @@
     <!--<canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="3360" height="492" style="width: 1680px; height: 246px;"></canvas>
     <div class="a-enter-vr" aframe-injected=""><button class="a-enter-vr-button" title="Enter VR mode with a headset or fullscreen mode on a desktop. Visit https://webvr.rocks or https://webvr.info for more information." aframe-injected=""></button></div>
     <div class="a-orientation-modal a-hidden" aframe-injected=""><button aframe-injected="">Exit VR</button></div><a-entity position="" data-aframe-default-camera="" camera="" wasd-controls="" rotation="" look-controls="" aframe-injected="" scale="" visible="">
-    </a-entity>
+    </a-entity>-->
 </a-scene>
 
 <!--<a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>-->
