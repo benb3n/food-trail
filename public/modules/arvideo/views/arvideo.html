@@ -50,15 +50,41 @@
   </a-entity>
 
 </a-scene>-->
+<button id="play-button"><i class="material-icons">play_arrow</i></button>
+<button id="pause-button"><i class="material-icons">pause</i></button>
 
-<a-scene environment="preset: starry" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
+<!--<a-scene environment="preset: starry" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
     <a-assets>
-        <video preload="auto"  autoplay="false" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" webkit-playsinline playsinline  ></video>
+        <!--<video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" 
+        crossorigin="anonymous" webkit-playsinline playsinline  ></video>
+        <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg" crossorigin="anonymous">
+        <a-mixin id="column" geometry="primitive: box; depth: .75; height: 1.2; width: .75" material="color: #FFF" position="0 .6 0"></a-mixin>
+        <a-mixin id="column-bottom" geometry="primitive: box; depth: 1; height: .1; width: 1;" material="color: #FFF" position="0 .1 0"></a-mixin>
+        <a-mixin id="object-on-column" position="0 1.2 0"></a-mixin>
     </a-assets>
-      
-    <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg" crossorigin="anonymous"></a-assets>
-    
-    <a-video id="inputVideo" visible="true" yeah autoplay="false" class="video" src="#video" webkit-playsinline playsinline 
+-->
+    <!--<a-video id="inputVideo" visible="true" yeah autoplay="false" class="video" src="#video" webkit-playsinline playsinline 
+            width="5" height="3" position="0 2 -5" rotation="0 0 0"  
+            material="shader: flat; src: #video;" >
+    </a-video>-->
+
+    <!--<a-entity position="-2 0 1" rotation="" scale="" visible="">
+        <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
+        <a-entity mixin="column-light" position="" rotation="" scale="" visible="" light=""></a-entity>
+        <a-entity mixin="object-on-column color box" position="" rotation="" scale="" visible="" material="" geometry="">
+            <a-animation mixin="spin" to="360 360 0"></a-animation>
+        </a-entity>
+        <a-entity mixin="object-on-column color box" position=".18 1.2 .1" rotation="" scale="" visible="" material="" geometry="">
+            <a-animation mixin="spin" to="360 360 0"></a-animation>
+        </a-entity>
+        <a-entity mixin="object-on-column color box" position="-.18 1.2 -.2" rotation="" scale="" visible="" material="" geometry="">
+            <a-animation mixin="spin" to="360 360 0"></a-animation>
+        </a-entity>
+        </a-entity>
+        <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
+    </a-entity>-->
+
+    <!--<a-video id="inputVideo" visible="true" yeah autoplay="false" class="video" src="#video" webkit-playsinline playsinline 
             width="7" height="5" position="5 5 -5" rotation="0 0 0"  material="shader: flat; src: #video;" >
         <button id="play-button"><i class="material-icons">play_arrow</i></button>
         <button id="pause-button"><i class="material-icons">pause</i></button>
@@ -69,17 +95,86 @@
       <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
       <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
       <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
-    </a-box>
+    </a-box>-->
 
-    <a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
-    <a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>
+
+    <!--<a-camera>
+        <a-cursor cursor-scale="2" cursor-color="#ffffff" cursor-opacity="0.5"></a-cursor>
+    </a-camera>-->
+    
+    
+    <!--<a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>-->
+<!--</a-scene>-->
+
+
+<a-scene environment="preset: starry" stats="" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+    <a-assets>
+        <a-mixin id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: .5;
+                                segmentsRadial: 50; segmentsHeight: 50:
+                                openEnded: true; thetaStart: 0; thetaLength: 360">
+        </a-mixin>
+
+        <a-mixin id="column" geometry="primitive: box; depth: .75; height: 1.2; width: .75" material="color: #FFF" position="0 .6 0"></a-mixin>
+        <a-mixin id="column-bottom" geometry="primitive: box; depth: 1; height: .1; width: 1;" material="color: #FFF" position="0 .1 0">
+        </a-mixin>
+        <a-mixin id="column-light" light="type: point; intensity: 0.5;
+                                                distance: 5;" position="0 1.5 0">
+        </a-mixin>
+        <a-mixin id="object-on-column" position="0 1.2 0"></a-mixin>
+        
+
+        <img id="carpet" src="assets/img/carpet.jpg" crossorigin="anonymous">
+        <img id="floor" src="assets/img/marble.jpg" crossorigin="anonymous">
+    </a-assets>
+    
+    <a-entity light="type: ambient; color: #444" position="" rotation="" scale="" visible=""></a-entity>
+    <a-entity light="type: directional; color: #EEE" position="0 1 1" rotation="" scale="" visible="">
+    </a-entity>
+    
+    <a-entity geometry="primitive: cylinder; height: .2; radius: 12;" material="color: #BABABA; src: #floor;
+        metalness: .2; repeat: 50 20; roughness: .1" position="0 0 0" rotation="" scale="" visible="">
+    </a-entity>
+
+    <a-entity geometry="primitive: box; depth: 20; height: 0.025; width: 2" material="color: #440000; metalness: 0; src: #carpet;
+        repeat: 3 40; roughness: 1" position="0 .2 0" rotation="" scale="" visible="">
+    </a-entity>
+    
+    <a-entity position="-2.5 0 1" rotation="" scale="" visible="">
+        <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
+        <a-entity mixin="column-light" position="" rotation="" scale="" visible="" light=""></a-entity>
+        <a-entity mixin="object-on-column color box" position="" rotation="" scale="" visible="" material="" geometry="">
+        <a-animation mixin="spin" to="360 360 0"></a-animation>
+    </a-entity>
+
+    
+    <!--<a-entity position="-10 0 -5" rotation="" scale="" visible="">
+        <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
+            <a-entity mixin="column-light" position="" rotation="" scale="" visible="" light=""></a-entity>
+            <a-entity mixin="object-on-column color box" position="" rotation="" scale="" visible="" material="" geometry="">
+                <a-animation mixin="spin" to="360 360 0"></a-animation>
+            </a-entity>
+            <a-entity mixin="object-on-column color box" position=".18 1.2 .1" rotation="" scale="" visible="" material="" geometry="">
+                <a-animation mixin="spin" to="360 360 0"></a-animation>
+            </a-entity>
+            <a-entity mixin="object-on-column color box" position="-.18 1.2 -.2" rotation="" scale="" visible="" material="" geometry="">
+                <a-animation mixin="spin" to="360 360 0"></a-animation>
+            </a-entity>
+        </a-entity>
+        <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
+    </a-entity>-->
+    
+    <!--<canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="3360" height="492" style="width: 1680px; height: 246px;"></canvas>
+    <div class="a-enter-vr" aframe-injected=""><button class="a-enter-vr-button" title="Enter VR mode with a headset or fullscreen mode on a desktop. Visit https://webvr.rocks or https://webvr.info for more information." aframe-injected=""></button></div>
+    <div class="a-orientation-modal a-hidden" aframe-injected=""><button aframe-injected="">Exit VR</button></div><a-entity position="" data-aframe-default-camera="" camera="" wasd-controls="" rotation="" look-controls="" aframe-injected="" scale="" visible="">
+    </a-entity>
 </a-scene>
 
+<!--<a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>-->
+
 <!--<a-scene>
-    <a-sky src="#video" >
-            <button id="play-button"><i class="material-icons">play_arrow</i></button>
+    <a-sky src="assets/img/eu_yan_sang_past.png" rotation="0 -130 0"></a-sky>>
+    <button id="play-button"><i class="material-icons">play_arrow</i></button>
             <button id="pause-button"><i class="material-icons">pause</i></button>
-    </a-sky>>
     <a-assets>
         <video preload="auto"  autoplay="true" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" webkit-playsinline playsinline  ></video>
     </a-assets>
@@ -93,7 +188,11 @@
       <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
     </a-box>
 
-    <a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
+    
+    <!--<a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
+    <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
     <a-text value="Hello, A-Frame!" color="#FAFAFA" position="-0.9 0.2 -3" scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>
 </a-scene>-->
 

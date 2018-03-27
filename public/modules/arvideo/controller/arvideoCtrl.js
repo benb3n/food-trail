@@ -50,6 +50,7 @@ angular.module('ArvideoCtrl', [])
 
         document.getElementById('pause-button').style.visibility = 'hidden'
         document.getElementById('play-button').addEventListener("click", function(e){
+            
             this.style.visibility = 'hidden';
             document.getElementById('pause-button').style.visibility = "visible"
             vid.play();
