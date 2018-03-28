@@ -110,8 +110,8 @@
 <<a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
     <a-assets>
         <a-mixin id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: .5;">                 
-        <video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" crossorigin="anonymous" 
-            webkit-playsinline playsinline  ></video>
+        <!--<video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" crossorigin="anonymous" 
+            webkit-playsinline playsinline  ></video>-->
 
         <a-mixin id="column" geometry="primitive: box; depth: .75; height: 2; width: .75" material="color: #FFF" position="0 .6 0"></a-mixin>
         <a-mixin id="column-bottom" geometry="primitive: box; depth: 1; height: .3; width: 1;" material="color: #FFF" position="0 .1 0"></a-mixin>
@@ -123,16 +123,17 @@
         <a-mixin id="color" material="color: #FFFFC3"></a-mixin>
         <a-mixin id="doubleside" material="side: double"></a-mixin>
 
+        <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+        <a-mixin id="cube-selected" material="color: #876A96"></a-mixin>
+        <a-mixin id="cube-hovered" material="color: #CC435F"></a-mixin>
+        <a-mixin id="red" material="color: #F35F5F"></a-mixin>
+        <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
+
         <img id="product" src="assets/img/eu_yan_sang_bird_nest.png" crossorigin="anonymous">
         <img id="carpet" src="assets/img/carpet.jpg" crossorigin="anonymous">
         <img id="floor" src="assets/img/marble.jpg" crossorigin="anonymous">
     </a-assets>
-    <a-entity cursor="fuse: true; fuseTimeout: 500"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: black; shader: flat">
-  </a-entity>
-    
+
     <a-entity light="type: ambient; color: #444" position="" rotation="" scale="" visible=""></a-entity>
     <a-entity light="type: directional; color: #EEE" position="0 1 1" rotation="" scale="" visible=""></a-entity>
     
@@ -144,15 +145,16 @@
         repeat: 3 40; roughness: 1" position="0 .2 0" rotation="" scale="" visible="">
     </a-entity>
     
-    <a-entity position="-2.5 0 -2" rotation="" scale="" visible="">
+    <a-entity id="productbox" position="-2.5 0 -2" rotation="" scale="" visible="">
         <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
             <a-entity mixin="column-light" position="" rotation="" scale="" visible="" light=""></a-entity>
-            <a-entity material="src: #product;" position="0 1.4 0" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.5; height: .5; width: 0.5">
-                    <a-animation mixin="spin"></a-animation>
+            <a-entity id="productCube" class="intersectable"  material="src: #product;" position="0 1.4 0" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.6; height: .6; width: 0.6">
+                <a-animation mixin="spin"></a-animation>
             </a-entity>
         </a-entity>
         <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
     </a-entity>
+    <a-text id="productText" value="Premium Bird Nest" color="#FAFAFA" position="-2.5 2 -2" rotation="0 45 0"  scale="1.5 1.5 1.5" rotation="" visible="false" text=""></a-text>
 
     <a-entity position="2.5 0 -2" rotation="" scale="" visible="">
         <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
@@ -162,9 +164,22 @@
         <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
     </a-entity>
     
-    <a-entity>
-        <a-cursor></a-cursor>
+    <a-entity position="2.5 1.2 2.5" rotation="" scale="" visible="">
+        <a-entity id="foregroundCube" class="intersectable" mixin="green cube"  position="" rotation="" scale="" visible="" material="" geometry="">
+            <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
+        </a-entity>
     </a-entity>
+
+    <a-entity position="0 1.5 0" rotation="" scale="" visible="">
+        <a-camera position="" rotation="" scale="" visible="" camera="" look-controls="" wasd-controls="">
+            <a-entity raycaster="far: 30; objects: .intersectable" cursor="" geometry="primitive: ring; radiusOuter: 0.015;
+                    radiusInner: 0.01; segmentsTheta: 32" material="color: #283644; shader: flat" position="0 0 -0.75" rotation="" scale="" visible=""></a-entity>
+        </a-camera>
+    </a-entity>
+
+    <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="750" height="1334" style="width: 375px; height: 667px;"></canvas>
+        
+    
     <!--<a-entity position="-10 0 -5" rotation="" scale="" visible="">
         <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
             <a-entity mixin="column-light" position="" rotation="" scale="" visible="" light=""></a-entity>
