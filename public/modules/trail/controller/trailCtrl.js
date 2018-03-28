@@ -66,12 +66,12 @@ angular.module('TrailCtrl', ['appConstants'])
                 {lat: 1.295258, lng: 103.850578, name: "Eu Yan Sang", address: "273 South Bridge Rd, Singapore 058822", icon: "cafe", 
                 category: "tea", hours: "Mon - Fri (8.30am - 6pm) ", 
                 description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
-                phone: "+65 62233649" , img: "../assets/img/eu_yang_sang.png"},
+                phone: "+65 62233649" , img: "../assets/img/eu_yan_sang.png"},
                 
                 {lat: 1.28187, lng: 103.8452, name: "Eu Yan Sang", address: "273 South Bridge Rd, Singapore 058822", icon: "cafe",
                 category: "tcm", hours: "Monday, Tuesday, Thursday & Friday: 8:30am - 6pm Wednesday: 9am - 6pm Saturday: 8:30am - 7:30pm", 
                 description: "Eu Yan Sang aims to be a leading and trusted integrative health and wellness company with a unique heritage in Chinese Medicine.", 
-                phone: "+65 6223 5085" , img: "../assets/img/eu_yang_sang.png"},
+                phone: "+65 6223 5085" , img: "../assets/img/eu_yan_sang.png"},
 
                 {lat: 1.284836, lng: 103.844361, name: "Pek Sin Choon", address: "36 Mosque St, Singapore 059514", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", 
@@ -405,12 +405,12 @@ angular.module('TrailCtrl', ['appConstants'])
 
         var html = //<b>" + name + "</b> <br/>" + address
         "<div style='width:"+ screen_width +"px'>" +
-        "<img style='float:left; width:70px; margin-top:0px' src='"+ location.img +"'> " +
+        "<img style='float:left; width:80px; margin-top:0px; margin-right:5px' src='"+ location.img +"'> " +
         "<div style='margin-left:50px; margin-bottom:20px;'> " +
-        "<h6>"+ location.name +"</h6> <p>"+ location.description +"</p> " +
+        "<h6>"+ location.name +"</h6>" +//<p>"+ location.description +"</p> " +
         //"<p><b>Open:</b> "+ location.hours +"<br/><b>Phone:</b> "+ location.phone +"</p> " +
         "Find Out More <a href='#' id='a' data-activates='slide-out' class='location-collapse'><i class='material-icons'>search</i></a>" +
-        //"<p><img src='https://maps.googleapis.com/maps/api/streetview?size=250x120&location="+ location.lat + "," + location.lng +"&key="+GOOGLE_MAPS_KEY+"'    ></p>" +
+        //"<p><img style='margin-top:5px' src='https://maps.googleapis.com/maps/api/streetview?size=300x120&location="+ location.lat + "," + location.lng +"&key="+GOOGLE_MAPS_KEY+"'    ></p>" +
         "</div></div> ";
 
         var marker = new google.maps.Marker({
@@ -430,6 +430,9 @@ angular.module('TrailCtrl', ['appConstants'])
             vm.location.description  = location.description 
             vm.location.img = location.img 
             vm.location.hours = location.hours 
+            vm.location.lat = location.lat 
+            vm.location.lng = location.lng 
+            vm.location.key = GOOGLE_MAPS_KEY
 
             $timeout(function(){
                 $('.location-collapse').sideNav({

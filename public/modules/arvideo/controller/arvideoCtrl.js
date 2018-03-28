@@ -72,18 +72,29 @@ angular.module('ArvideoCtrl', [])
         })
 
          // testing mouseenter and mouseleave
-        var foregroundCube = document.querySelector('#foregroundCube');
-        foregroundCube.addEventListener('mouseenter', function (evt) {
-            console.log("TEST")
-           foregroundCube.setAttribute('mixin','cube cube-hovered')
+        var answer1 = document.querySelector('#answer1');
+        answer1.addEventListener('mouseenter', function (evt) {
+            answer1.setAttribute('mixin','cube cube-hovered')
         })
-        foregroundCube.addEventListener('mouseleave', function (evt) {
-            console.log("TEST")
-           foregroundCube.setAttribute('mixin','green cube')
+        answer1.addEventListener('mouseleave', function (evt) {
+            answer1.setAttribute('mixin','green cube')
+        })
+        var answer2 = document.querySelector('#answer2');
+        answer2.addEventListener('mouseenter', function (evt) {
+            answer2.setAttribute('mixin','cube cube-hovered')
+        })
+        answer2.addEventListener('mouseleave', function (evt) {
+            answer2.setAttribute('mixin','green cube')
+        })
+        var answer3 = document.querySelector('#answer3');
+        answer3.addEventListener('mouseenter', function (evt) {
+            answer3.setAttribute('mixin','cube cube-hovered')
+        })
+        answer3.addEventListener('mouseleave', function (evt) {
+            answer3.setAttribute('mixin','green cube')
         })
         
-
-        foregroundCube.addEventListener('click', function (evt) {
+        answer1.addEventListener('click', function (evt) {
             console.log("SEE")
             var scene = document.querySelector('a-scene');
             var clickRing = document.createElement('a-entity');
@@ -94,7 +105,7 @@ angular.module('ArvideoCtrl', [])
             var opacityAnimation = document.createElement('a-animation');
             opacityAnimation.setAttribute('attribute','material.opacity');
             opacityAnimation.setAttribute('to',0);
-            opacityAnimation.setAttribute('duration','250');
+            opacityAnimation.setAttribute('duration','300');
             opacityAnimation.setAttribute('easing','ease-out-quad');
             var scaleAnimation = document.createElement('a-animation');
             scaleAnimation.setAttribute('attribute','scale');
@@ -104,6 +115,7 @@ angular.module('ArvideoCtrl', [])
             var onAnimationEnd = function () {
               scene.removeChild(document.querySelector('#'+clickRing.id))
             }
+ 
             scaleAnimation.addEventListener('animationend', onAnimationEnd.bind(this))
             clickRing.appendChild(opacityAnimation);
             clickRing.appendChild(scaleAnimation);

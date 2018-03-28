@@ -107,11 +107,14 @@
 <!--</a-scene>-->
 
 
-<<a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
+<a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
     <a-assets>
         <a-mixin id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: .5;">                 
         <!--<video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" crossorigin="anonymous" 
             webkit-playsinline playsinline  ></video>-->
+        
+        <audio id="blip1" src="assets/sounds/blip1.wav"></audio>
+        <audio id="blip2" src="assets/sounds/blip2.wav"></audio>
 
         <a-mixin id="column" geometry="primitive: box; depth: .75; height: 2; width: .75" material="color: #FFF" position="0 .6 0"></a-mixin>
         <a-mixin id="column-bottom" geometry="primitive: box; depth: 1; height: .3; width: 1;" material="color: #FFF" position="0 .1 0"></a-mixin>
@@ -154,7 +157,7 @@
         </a-entity>
         <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
     </a-entity>
-    <a-text id="productText" value="Premium Bird Nest" color="#FAFAFA" position="-2.5 2 -2" rotation="0 45 0"  scale="1.5 1.5 1.5" rotation="" visible="false" text=""></a-text>
+    <a-text id="productText" value="Premium Bird Nest" color="#FAFAFA" position="-2.5 2 -2" rotation="0 45 0"  scale="1 1 1" rotation="" visible="false" text=""></a-text>
 
     <a-entity position="2.5 0 -2" rotation="" scale="" visible="">
         <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
@@ -164,11 +167,24 @@
         <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
     </a-entity>
     
-    <a-entity position="2.5 1.2 2.5" rotation="" scale="" visible="">
-        <a-entity id="foregroundCube" class="intersectable" mixin="green cube"  position="" rotation="" scale="" visible="" material="" geometry="">
+    <!--<a-text id="questionText" value="Who is the current CEO of Eu Yan Sang" color="#FAFAFA" position="-2.5 2.5 -2"
+        rotation=""  scale="1.5 1.5 1.5" rotation="" visible="" text=""></a-text>-->
+    <a-entity position=".5 1.5 2" rotation="" scale="" visible="">
+        <a-entity id="answer1" class="intersectable" mixin="green cube" sound__1="on: click; src: #blip1;" sound__2="on: mouseenter; src: #blip2;" position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3"
             <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
         </a-entity>
     </a-entity>
+    <a-entity position="0 1.5 2" rotation="" scale="" visible="">
+            <a-entity id="answer2" class="intersectable" mixin="green cube" sound__1="on: click; src: #blip1;" sound__2="on: mouseenter; src: #blip2;" position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3">
+                <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
+            </a-entity>
+        </a-entity>
+    <a-entity position="-.5 1.5  2" rotation="" scale="" visible="">
+        <a-entity id="answer3" class="intersectable" mixin="green cube" sound__1="on: click; src: #blip1;" sound__2="on: mouseenter; src: #blip2;" position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3">
+            <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
+        </a-entity>
+    </a-entity>
+    
 
     <a-entity position="0 1.5 0" rotation="" scale="" visible="">
         <a-camera position="" rotation="" scale="" visible="" camera="" look-controls="" wasd-controls="">
