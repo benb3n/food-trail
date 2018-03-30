@@ -174,7 +174,7 @@ nav .brand-logo {
     width: 80%;
     background-color: rgba(180, 180, 180, 0.3);
 }
-.sidebar-logo .simple-text {
+.sidebar-logo .simple-text{
     text-transform: uppercase;
     padding: 5px 0px;
     display: block;
@@ -184,6 +184,17 @@ nav .brand-logo {
     font-weight: 300;
     line-height: 30px;
     font-family: 'Poiret One', cursive;
+}
+.title-text{
+  text-transform: uppercase;
+  padding: 0px 0px;
+  display: block;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  font-weight: 300;
+  line-height: 0px;
+  font-family: 'Poiret One', cursive;
 }
 .side-nav li:hover{
   background: rgba(255, 255, 255, 0.9);
