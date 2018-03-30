@@ -227,6 +227,10 @@ nav .brand-logo {
     width: 100% !important;
     height: 100% !important;
   }
+  .carousel-item-image-side-bar{
+    width:70% !important;
+    height:70% !important;
+  }
   #map {
     height: 565px !important; 
   }

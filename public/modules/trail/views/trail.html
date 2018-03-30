@@ -70,21 +70,34 @@
                 <div class="sidebar-logo">
                     <p class="title-text">{{trail.location.name}}</p>
                 </div>
-                <div style="overflow-y:auto;">
+                <div style="height: 550px; overflow:auto;">
                     <div style="margin:5px; text-align:center">
-                        <img  width='200px' src="{{trail.location.img}}">
+                        <div class="carousel" style="margin-top:10px; height:300px"> 
+                            <a class="carousel-item " href="#">
+                                <img class="carousel-item-image-side-bar" width='150px' src="{{trail.location.img}}" > 
+                            </a>
+                            <a class="carousel-item " href="#">
+                                    <img class="carousel-item-image-side-bar" width='150px' src="{{trail.location.img1}}" > 
+                            </a>
+                            <a class="carousel-item " href="#">
+                                <img class="carousel-item-image-side-bar" width='150px' src="{{trail.location.img2}}" > 
+                            </a>
+                        </div>
                     </div>
-                    <div style="margin:5px; font-family: 'Poiret One', cursive; font-size:17px">
+                    <div style="margin-top:-70px; margin-left:10px; margin-right:10px; font-family: 'Poiret One', cursive; font-size:17px">
                         <p class="white-text">{{trail.location.description}}</p>
                     </div>
                     <div style="margin:5px; font-family: 'Poiret One', cursive; font-size:17px;">
                         <p class="white-text">Opening Hour</p>
                         <p class="white-text">{{trail.location.hours}}</p>
                     </div>
-                
                     <div class="fb-share-button" data-href="http://food-trail.herokuapp.com/home" data-layout="button" data-size="small" data-mobile-iframe="true">
                         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffood-trail.herokuapp.com%2Fhome&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
                     </div>
+                    <div>
+                        
+                    </div>
+
                 </div>
 
             </div>

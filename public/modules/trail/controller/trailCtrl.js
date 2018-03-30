@@ -31,7 +31,7 @@ angular.module('TrailCtrl', ['appConstants'])
         $('select').material_select();
         $('.modal').modal();
         $('.tooltipped').tooltip({delay: 50});
-
+        $('.carousel').carousel();
     });
 
     function hasGetUserMedia() {
@@ -80,37 +80,37 @@ angular.module('TrailCtrl', ['appConstants'])
                 {lat: 1.28187, lng: 103.8452, name: "Eu Yan Sang", address: "273 South Bridge Rd, Singapore 058822", icon: "cafe",
                 category: "tcm", hours: "Monday, Tuesday, Thursday & Friday: 8:30am - 6pm Wednesday: 9am - 6pm Saturday: 8:30am - 7:30pm", 
                 description: "Eu Yan Sang, a traditional chinese medicine company that has survived the test of time since its founding in 1879. Ah Wong visits them from time to time to get medication and herbs to strengthen his body from all the hard work that he does on a daily basis. Breathe in and be part of a modernizing traditional chinese business with rich cultural heritage roots.", 
-                phone: "+65 6223 5085" , img: "../assets/img/eu_yan_sang.png"},
+                phone: "+65 6223 5085" , img: "../assets/img/eu_yan_sang.png", img1: "../assets/img/eu_yan_sang_1.jpg", img2:"../assets/img/eu_yan_sang_2.jpg"},
 
                 {lat: 1.284836, lng: 103.844361, name: "Pek Sin Choon", address: "36 Mosque St, Singapore 059514", icon: "cafe",
                 category: "tea", hours: "10am - 10pm", 
                 description: "Pek Sin Choon, one of the oldest tea merchants in Singapore and where Ah Wong frequently goes to get his supply of tea leaves to pair with his morning breakfast. Before making any purchases, smell the strong aroma from the tea leaves and find out the medicinal properties that each and every one has.", 
-                phone: "+65 66048858" , img: "../assets/img/thye moh chan.png"},
+                phone: "+65 66048858" , img: "../assets/img/Pek Sin Choon.png", img1: "../assets/img/pek_sin_choon_1.jpg", img2: "../assets/img/pek_sin_choon_2.jpg"},
 
                 {lat: 1.281615, lng: 103.844961, name: "Tong Heng", address: "285 South Bridge Rd, 058833", icon: "cafe",
                 category: "patisserie", hours: "9am - 10pm", 
                 description: "Tong Heng hailed directly from the province of Guang Dong in China, a land known for its culinary flair and exquisite cuisines. The shop is most well-known for their diamond-shaped egg tart which has a “melt in the mouth” effect which lies in their crumbly-layered pastry and velvety smooth egg custard filling. Ah Wong recommends trying them while they are fresh and still warm from the oven.", 
-                phone: "+65 62233649", img: "../assets/img/tong_heng_logo.jpg"},
+                phone: "+65 62233649", img: "../assets/img/tong_heng_logo.jpg", img1: "../assets/img/tong_heng_1.jpg", img2: "../assets/img/tong_heng_2.jpg"},
 
-                {lat: 1.280222, lng: 103.843555, name: "Lian He Ben Ji Claypot Rice", address: "335 Smith Street, Chinatown Complex, Singapore 050335", icon: "cafe",
+                {lat: 1.282255, lng: 103.842576, name: "Lian He Ben Ji Claypot Rice", address: "335 Smith Street, Chinatown Complex, Singapore 050335", icon: "cafe",
                 category: "tea", hours: "4:30pm - 10:30pm, Closed on Thursdays", 
                 description: "One of Ah Wong guilty pleasures, the traditional method of cooking rice in a claypot (shā guo in Chinese) give a crispy crust to the rice and provides a piping hot delectable meal which warms the soul. Lian He Ben Ji Claypot Rice is one the few places that still use a charcoal fire to give their offerings a traditional method of preparation for their customers.", 
-                phone: "+65 6227 2470" , img: "../assets/img/Lian He Ben Ji Claypot Rice.png"},
+                phone: "+65 6227 2470" , img: "../assets/img/Lian He Ben Ji Claypot Rice.png", img1: "../assets/img/lian_he_ben_ji_1.jpg" , img2: "../assets/img/lian_he_ben_ji_2.jpg"},
                 
                 {lat: 1.282574, lng: 103.8431, name: "Kent Thong Turtle Soup", address: "335 Smith Street, Chinatown Complex, Singapore 050335", icon: "cafe",
                 category: "food", hours: "10:00am - 19:00pm", 
                 description: "One of the more unique and rarer offerings where Ah Wong goes to get a nutritious bowl of hot soup rich with collagen and protein keep him strong for the day ahead. However, if you’re not as adventurous as Ah Wong, you can try out their herbal black chicken and mutton soups instead.", 
-                phone: "+65 " , img: "../assets/img/Kent Thong Turtle Soup.png"},
+                phone: "+65 " , img: "../assets/img/Kent Thong Turtle Soup.png", img1: "../assets/img/kent_thong_1.jpg", img2: "../assets/img/kent_thong_2.jpg"},
 
                 {lat: 1.281951, lng: 103.8439, name: "Toh Kee Roast Duck", address: "34 Sago St, Singapore 059026", icon: "cafe",
                 category: "food", hours: "10:30am to 7pm, Closed on mondays", 
                 description: "Roast Duck Rice, the only other bird that can compete with the chicken rice for the top spot in Singapore. At Toh Kee Roast Duck, they still use an antique brick linen oven from when they first opened to create crispy skin and tender meat offerings. Ah Wong loves to eat the Roast Duck as it’s rare to find such delectable options around.", 
-                phone: "+65 " , img: "../assets/img/Toh Kee.png"},
+                phone: "+65 " , img: "../assets/img/Toh Kee.png", img1: "../assets/img/toh_kee_1.jpg", img2: "../assets/img/toh_kee_2.jpg"},
 
-                {lat: 1.285129, lng: 103.8426, name: "Yong Xiang Xing Yong Tau Foo", address: "34 Sago St, Singapore 059026", icon: "cafe",
+                {lat: 1.285129, lng: 103.8426, name: "Yong Xiang Xing", address: "34 Sago St, Singapore 059026", icon: "cafe",
                 category: "food", hours: "Monday-Saturday 12.00pm - 4.00pm, Sunday 1.00pm - 4.00pm", 
                 description: "Yong Tau Foo, a Hakka Chinese Cuisine which consists of a large mix of dishes to be eaten as either dry or with a soup. At Yong Xiang Xing Yong Tau Foo, it is served to you without you choosing any of the items, and the soup has a nice blend of pork and soybean stock flavours. Ah Wong frequently comes by to eat their soup during his short lunch breaks as they quickly serve their customers with delectable food.", 
-                phone: "+65 " , img: "../assets/img/Yong Xiang Xing Yong Tau Foo.png"},
+                phone: "+65 " , img: "../assets/img/Yong Xiang Xing Yong Tau Foo.png", img1: "../assets/img/Yong Xiang Xing Yong1.jpg", img2: "../assets/img/Yong Xiang Xing Yong2.png" },
                 
             ],
             locations_by_name:{}
@@ -128,7 +128,7 @@ angular.module('TrailCtrl', ['appConstants'])
             vm.map.directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions:{strokeColor:"#7f3131",strokeWeight:3}});
             vm.map.infoWindow = new google.maps.InfoWindow;
             vm.map.directionsDisplay.setMap(map);
-            //CREATE MARKET
+            //CREATE MARKER
             vm.data.locations.forEach(function(location, index){
                 vm.data.locations_by_name[''+location.address] = location;
                 createMarker(new google.maps.LatLng( parseFloat(location.lat), parseFloat(location.lng) ), location.name, location.address, location.icon, location, map)
@@ -246,6 +246,8 @@ angular.module('TrailCtrl', ['appConstants'])
                         vm.location.name = result[1].description.name
                         vm.location.description  = result[1].description.description 
                         vm.location.img = result[1].description.img 
+                        vm.location.img1 = result[1].description.img1
+                        vm.location.img2 = result[1].description.img2 
                         vm.location.hours = result[1].description.hours 
 
                         var video = document.createElement("video");
@@ -447,16 +449,17 @@ angular.module('TrailCtrl', ['appConstants'])
 
         var screen_width = (window.innerWidth > 800) ? 500: window.innerWidth - 100;
 
+        //MARKER TEXT 
         var html = //<b>" + name + "</b> <br/>" + address
         "<div style='width:"+ screen_width +"px; text-align:center'>" +
-        "<div><img style='width:200px;  margin-top:0px; margin-left:25px' src='"+ location.img +"'></div></br>" +
+        "<div><img style='width:180px;  margin-top:0px; margin-left:25px' src='"+ location.img +"'></div></br>" +
         "<div style='margin-left:40px; margin-top:-10px; margin-bottom:20px; font-family: Poiret One, cursive; font-size:20px !important'> " +
         "<p style='font-weight:bold'>"+ location.name +"</p>" +//<p>"+ location.description +"</p> " +
         //"<p><b>Open:</b> "+ location.hours +"<br/><b>Phone:</b> "+ location.phone +"</p> " +
         "<a href='#' id='a' data-activates='slide-out' class='location-collapse'>Find Out More<i class='material-icons'>search</i></a>" +
         //"<p><img style='margin-top:5px' src='https://maps.googleapis.com/maps/api/streetview?size=300x120&location="+ location.lat + "," + location.lng +"&key="+GOOGLE_MAPS_KEY+"'    ></p>" +
         "</div></div> ";
-
+        
         var marker = new google.maps.Marker({
           map: map,
           position: latlng,
@@ -473,6 +476,8 @@ angular.module('TrailCtrl', ['appConstants'])
             vm.location.name = location.name
             vm.location.description  = location.description 
             vm.location.img = location.img 
+            vm.location.img1 = location.img1 
+            vm.location.img2 = location.img2 
             vm.location.hours = location.hours 
             vm.location.lat = location.lat 
             vm.location.lng = location.lng 
@@ -484,6 +489,8 @@ angular.module('TrailCtrl', ['appConstants'])
                     edge: 'right', // Choose the horizontal origin
                     closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
                 });
+                $('.carousel').carousel();
+
             });
         });
         
