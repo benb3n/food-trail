@@ -23,7 +23,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controllerAs: "arvideo"
         })
         .when('/virtual', {
-            templateUrl: 'modules/arvideo/views/virtual.html',
+            templateUrl: 'modules/virtual/views/virtual.html',
             controller: 'VirtualController',
             controllerAs: "virtual"
         })

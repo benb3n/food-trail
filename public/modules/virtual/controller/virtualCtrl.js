@@ -45,7 +45,7 @@ angular.module('VirtualCtrl', [])
         } });*/
         
         // Custom states.
-        var clickedEl = null;
+        /*var clickedEl = null;
         var els = document.querySelectorAll('a-entity');
         Array.prototype.forEach.call(els, function (el) {
             el.addEventListener('click', function () {
@@ -153,7 +153,7 @@ angular.module('VirtualCtrl', [])
             this.style.visibility = 'hidden';
             document.getElementById('play-button').style.visibility = "visible"
             vid.pause();
-        }, false);
+        }, false);*/
 
     }
 

@@ -1,0 +1,38 @@
+<a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
+    <a-assets>
+        <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+        <a-mixin id="board" geometry="depth: .05; height: 1; width: 6" material="shader: flat" pivot="0 0.5 0" position="0 -1 0"></a-mixin>
+        <a-mixin id="unhinge" attribute="rotation" to="0 0 0" dur="1000" fill="both"></a-mixin>
+
+        <img id="carpet" src="assets/img/carpet.jpg" crossorigin="anonymous">
+        <img id="floor" src="assets/img/marble.jpg" crossorigin="anonymous">
+        <img id="eys" src="assets/img/eys_past_1.jpg">   
+    </a-assets>
+    
+    <!--LIGHT-->
+    <a-entity light="type: ambient; color: #444" position="" rotation="" scale="" visible=""></a-entity>
+    <a-entity light="type: directional; color: #EEE" position="0 1 1" rotation="" scale="" visible=""></a-entity>
+    <!--FLOOR-->
+    <a-entity geometry="primitive: cylinder; height: .2; radius: 12;" material="color: #BABABA; src: #floor;
+        metalness: .2; repeat: 50 20; roughness: .1" position="0 0 0" rotation="" scale="" visible="">
+    </a-entity>
+    <a-entity geometry="primitive: box; depth: 20; height: 0.025; width: 2" material="color: #440000; metalness: 0; src: #carpet;
+        repeat: 3 40; roughness: 1" position="0 .2 0" rotation="" scale="" visible="">
+    </a-entity>
+
+    <a-curvedimage src="#eys" radius="5.7" theta-length="72" height="5" rotation="0 90 0" position="0 1.7 0" scale="0.6 0.6 0.6" visible="" 
+    material="" geometry="" ></a-curvedimage>
+    <a-entity position="2.5 3.5 -1.5" text="width: 3; lineHeight: 50; letterSpacing: 5; color: red; 
+        value: A glimpse into its past, the old Eu Yan Sang store in South Bridge Road, before renovations took place in the 1990s"
+        rotation="0 -55 0" scale="" visible="">
+    </a-entity>
+
+    <a-entity position="-2.5 1.5 -2" rotation="" scale="" visible="">
+        <a-entity id="answer1" class="intersectable" mixin="green cube"  position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3">
+            <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
+        </a-entity>
+    </a-entity>
+    
+
+
+</a-scene>
