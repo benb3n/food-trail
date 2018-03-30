@@ -107,11 +107,16 @@
 <!--</a-scene>-->
 
 
-<a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
+<!--<a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">-->
+<a-scene >
+    <a-sky src="assets/img/eu_yan_sang_past.png" rotation="0 -130 0"></a-sky>>
     <a-assets>
+        <a-mixin id="board" geometry="depth: .05; height: 1; width: 6" material="shader: flat" pivot="0 0.5 0" position="0 -1 0"></a-mixin>
+        <a-mixin id="unhinge" attribute="rotation" to="0 0 0" dur="1000" fill="both"></a-mixin>
+
         <a-mixin id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: .5;">                 
-        <video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" crossorigin="anonymous" 
-            webkit-playsinline playsinline  ></video>
+        <!--<video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" crossorigin="anonymous" 
+            webkit-playsinline playsinline  ></video>-->
         
         <audio id="blip1" src="assets/sounds/blip1.wav"></audio>
         <audio id="blip2" src="assets/sounds/blip2.wav"></audio>
@@ -135,6 +140,7 @@
         <img id="product" src="assets/img/eu_yan_sang_bird_nest.png" crossorigin="anonymous">
         <img id="carpet" src="assets/img/carpet.jpg" crossorigin="anonymous">
         <img id="floor" src="assets/img/marble.jpg" crossorigin="anonymous">
+        <img id="thumbCity" crossorigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/city.png">
     </a-assets>
 
     <a-entity light="type: ambient; color: #444" position="" rotation="" scale="" visible=""></a-entity>
@@ -158,6 +164,27 @@
         <a-entity mixin="column-bottom" position="" rotation="" scale="" visible="" geometry="" material=""></a-entity>
     </a-entity>
     <a-text id="productText" value="Premium Bird Nest" color="#FAFAFA" position="-2.5 2 -2" rotation="0 45 0"  scale="1 1 1" rotation="" visible="false" text=""></a-text>
+    
+    <!--<a-entity id="productDetail"position="-5 0 -5" scale="1 1 1" rotation="0 45 0" visible="">
+            <a-animation attribute="position" to="0 5 -8" dur="2000"></a-animation>
+            <a-animation attribute="rotation" from="-5 60 -5" to="0 30 0" dur="3000"></a-animation>        
+            <a-box mixin="board" color="#F16745" position="" rotation="" scale="" visible="" geometry="" material="" pivot="">
+                <a-animation mixin="unhinge" from="-20 0 0" delay="2000"></a-animation>
+            <a-box mixin="board" color="#F16745" position="" rotation="" scale="" visible="" geometry="" material="" pivot="">
+                <a-animation mixin="unhinge" from="-175 0 0" delay="50"></a-animation>
+                <a-box mixin="board" color="#F16745" position="" rotation="" scale="" visible="" geometry="" material="" pivot="">
+                    <a-animation mixin="unhinge" from="-180 0 0" delay="750"></a-animation>
+                    <a-box mixin="board" color="#F16745" position="" rotation="" scale="" visible="" geometry="" material="" pivot="">
+                        <a-animation mixin="unhinge" from="-180 0 0" delay="1000"></a-animation>
+                            <a-box mixin="board" color="#F16745" position="" rotation="" scale="" visible="" geometry="" material="" pivot="">
+                                <a-animation mixin="unhinge" from="-180 0 0" delay="1250"></a-animation>
+                            </a-box>
+                        </a-box>
+                    </a-box>
+                </a-box>
+            </a-box>
+        </a-entity>-->
+    
 
     <a-entity position="2.5 0 -2" rotation="" scale="" visible="">
         <a-entity mixin="column" position="" rotation="" scale="" visible="" geometry="" material="">
@@ -184,7 +211,10 @@
             <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
         </a-entity>
     </a-entity>
+
     
+        
+
 
     <a-entity position="0 1.5 0" rotation="" scale="" visible="">
         <a-camera position="" rotation="" scale="" visible="" camera="" look-controls="" wasd-controls="">

@@ -178,11 +178,12 @@ nav .brand-logo {
     text-transform: uppercase;
     padding: 5px 0px;
     display: block;
-    font-size: 20px;
+    font-size: 25px;
     color: white;
     text-align: center;
     font-weight: 300;
     line-height: 30px;
+    font-family: 'Poiret One', cursive;
 }
 .side-nav li:hover{
   background: rgba(255, 255, 255, 0.9);
@@ -216,7 +217,7 @@ nav .brand-logo {
     height: 100% !important;
   }
   #map {
-    height: 450px !important; 
+    height: 565px !important; 
   }
 }
  /* .g-hed {

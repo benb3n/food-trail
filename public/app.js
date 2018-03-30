@@ -6,6 +6,7 @@ angular.module('ChineseBiz', [
     'TrailCtrl',
     'GalleryCtrl',
     'ArvideoCtrl',
+    'VirtualCtrl',
     'ngMap'
 
 ])

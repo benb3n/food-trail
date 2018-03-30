@@ -22,6 +22,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'ArvideoController',
             controllerAs: "arvideo"
         })
+        .when('/virtual', {
+            templateUrl: 'modules/arvideo/views/virtual.html',
+            controller: 'VirtualController',
+            controllerAs: "virtual"
+        })
 
 
         $locationProvider.html5Mode(true);

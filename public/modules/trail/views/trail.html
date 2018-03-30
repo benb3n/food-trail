@@ -1,41 +1,37 @@
 <div>
     <div class="col s12" style="margin:5px">
-        <a class="btn  waves-effect waves-light btn-small red" ng-click="trail.getRoute()"><i class="material-icons left">directions_walk</i> Start Trail</a>
-       
+        <a class="btn  waves-effect waves-light btn-small red" ng-click="trail.getRoute()" style="font-family: 'Poiret One', cursive; font-weight:900"><i class="material-icons left">directions_walk</i> Start Trail</a>
+        <a id="g-directions" class="btn  waves-effect waves-light btn-small red direction-collapse"  data-activates="slide-direction" style="font-family: 'Poiret One', cursive; visibility:hidden">
+            <i class="material-icons left">directions</i> Directions
+        </a>
     </div>
-    <div class="col s8">
+    <div class="col s12">
         <div class="map-view" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{trail.googleMapUrl}}">
-            <ng-map id="map" center="[1.283943, 103.843486]" zoom="14" pan-control="false" map-type-control="false" styles="[{stylers: [{ saturation: -100 }]}]">
+            <ng-map id="map" center="[1.283943, 103.843486]" zoom="16" pan-control="false" map-type-control="false" styles="[{stylers: [{ saturation: -100 }]}]">
                 <!--styles="[{stylers:[{hue:'#2c3e50'},{saturation:250}]},{featureType:'road',elementType:'geometry',stylers:[{lightness:50},{visibility:'simplified'}]},{featureType:'road',elementType:'labels',stylers:[{visibility:'off'}]}]"-->
             </ng-map>
         </div>
     </div>
     
-    <div class="col s4">
-        <div id="directions-panel"></div>
+    <div class="col s4" style="visibility: hidden">
+        <div id="directions-panel" ></div>
     </div>
     
     <!-- Modal Structure -->
     <div id="info_modal" class="modal">
         <div class="modal-content" style="text-align: center">
             <h5>Find a QR Code</h5>
-
-                <div class="file-field input-field">
+            <div class="file-field input-field">
                 <div class="btn">
                     <i class="material-icons">camera_alt</i>
-                  <input type="file" accept="image/*;capture=camera"  id="file_input_file">
+                    <input type="file" accept="image/*;capture=camera"  id="file_input_file">
                 </div>
                 <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text">
+                    <input class="file-path validate" type="text">
                 </div>
-              </div>
+            </div>
 
             </br>
-            
-            
-            
-        
-
             <div id="loadingMessage">🎥 Unable to access video stream (Kindly take a photo of the QR and upload it)</div>
             <canvas id="canvas" hidden data-activates="slide-out" class="location-collapse"></canvas>
             <div id="output" hidden>
@@ -43,10 +39,6 @@
                 <div hidden><b>Data:</b> <span id="outputData"></span></div>
             </div>
             
-
-  <script>
-    
-  </script>
 
             <!--<qr-scanner ng-success="trail.onQRReaderSuccess(data)" ng-error="trailonError(error)"  data-activates="slide-out" class="location-collapse"/>-->
             <label class="red text" id="qr_error"></label>
@@ -56,6 +48,20 @@
         </div>-->
     </div>
     
+    <ul id="slide-direction" class="side-nav">
+        <div class="sidebar-background" style="background-image: url(../assets/img/cny_sidebar.jpeg) "></div>
+            <div class="sidebar-logo">
+                <i class='material-icons ' ng-click="trail.closeModal()">close</i>
+                <div class="sidebar-logo">
+                    <p class="simple-text">TRAIL DIRECTIONS</p>
+
+                    <div style="margin:5px; font-family: 'Poiret One', cursive; font-size:17px; overflow-y:auto; height:500px;">
+                        <p class="white-text" id="summary-route">/p>
+                    </div>
+              
+                </div>
+            </div>
+        </ul>
 
     <ul id="slide-out" class="side-nav">
         <div class="sidebar-background" style="background-image: url(../assets/img/cny_sidebar.jpeg) "></div>
@@ -66,12 +72,12 @@
                 </div>
                 
                 <div style="margin:5px; text-align:center">
-                    <img  width='80px' src="{{trail.location.img}}">
+                    <img  width='200px' src="{{trail.location.img}}">
                 </div>
-                <div style="margin:5px">
+                <div style="margin:5px; font-family: 'Poiret One', cursive; font-size:17px">
                     <p class="white-text">{{trail.location.description}}</p>
                 </div>
-                <div style="margin:5px">
+                <div style="margin:5px; font-family: 'Poiret One', cursive; font-size:17px;">
                     <p class="white-text">Opening Hour</p>
                     <p class="white-text">{{trail.location.hours}}</p>
                 </div>
@@ -84,8 +90,6 @@
         </div>
     </ul>
 
-      
-         
     
     
 

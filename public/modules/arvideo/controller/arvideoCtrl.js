@@ -60,15 +60,21 @@ angular.module('ArvideoCtrl', [])
 
         //Products
         var productCube = document.querySelector('#productCube');
+   
         productCube.addEventListener('mouseenter', function (evt) {
             var productText = document.querySelector('#productText');
             productText.setAttribute('visible','');
             //productCube.setAttribute('mixin','cube-hovered')
+            var productDetail = document.querySelector('#productDetail');
+            productDetail.setAttribute('visible','');
+            productDetail.setAttribute('text','hihi');
         })
         productCube.addEventListener('mouseleave', function (evt) {
             var productText = document.querySelector('#productText');
             productText.setAttribute('visible','false');
             //productCube.setAttribute('mixin','cube-hovered')
+            var productDetail = document.querySelector('#productDetail');
+            productDetail.setAttribute('visible','false');
         })
 
          // testing mouseenter and mouseleave
@@ -149,6 +155,12 @@ angular.module('ArvideoCtrl', [])
             vid.pause();
         }, false);
 
+    }
+
+
+    vm.productDetail = productDetail
+    function productDetail(){
+        console.log("CLICCKCKAKK")
     }
 
 })
