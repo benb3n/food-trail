@@ -108,15 +108,15 @@
 
 
 <a-scene environment="preset: starry" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" fog="">
-<a-scene >
+<!--<a-scene >
     <!--<a-sky src="assets/img/eu_yan_sang_past.png" rotation="0 -130 0"></a-sky>>-->
     <a-assets>
         <a-mixin id="board" geometry="depth: .05; height: 1; width: 6" material="shader: flat" pivot="0 0.5 0" position="0 -1 0"></a-mixin>
         <a-mixin id="unhinge" attribute="rotation" to="0 0 0" dur="1000" fill="both"></a-mixin>
 
         <a-mixin id="cylinder" geometry="primitive: cylinder; radius: 0.2; height: .5;">                 
-        <!--<video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" crossorigin="anonymous" 
-            webkit-playsinline playsinline  ></video>-->
+        <video preload="auto"  autoplay="" id="video" loop="true" src="assets/video/Eu_Yan_Sang.mp4" type="video/mp4" crossorigin="anonymous" 
+            webkit-playsinline playsinline  ></video>
         
         <audio id="blip1" src="assets/sounds/blip1.wav"></audio>
         <audio id="blip2" src="assets/sounds/blip2.wav"></audio>
@@ -202,10 +202,10 @@
         </a-entity>
     </a-entity>
     <a-entity position="0 1.5 2" rotation="" scale="" visible="">
-            <a-entity id="answer2" class="intersectable" mixin="green cube" sound__1="on: click; src: #blip1;" sound__2="on: mouseenter; src: #blip2;" position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3">
-                <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
-            </a-entity>
+        <a-entity id="answer2" class="intersectable" mixin="green cube" sound__1="on: click; src: #blip1;" sound__2="on: mouseenter; src: #blip2;" position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3">
+            <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
         </a-entity>
+    </a-entity>
     <a-entity position="-.5 1.5  2" rotation="" scale="" visible="">
         <a-entity id="answer3" class="intersectable" mixin="green cube" sound__1="on: click; src: #blip1;" sound__2="on: mouseenter; src: #blip2;" position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3">
             <a-animation begin="click" attribute="rotation" to="0 360 0" easing="linear" dur="2000" fill="backwards"></a-animation>
