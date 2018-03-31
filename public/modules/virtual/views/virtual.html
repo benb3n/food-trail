@@ -8,7 +8,8 @@
         <img id="floor" src="assets/img/marble.jpg" crossorigin="anonymous">
         <img id="eys" src="assets/img/eys_past_1.jpg">   
         <img id="eys1" src="assets/img/eys_past_2.png">  
-        <img id="eys2" src="assets/img/eys_old_product.jpg">   
+        <img id="eys2" src="assets/img/eys_old_product.jpg">  
+        <img id="eys3" src="assets/img/eys_past_3.jpg">   
     </a-assets>
     
     <!--LIGHT-->
@@ -22,12 +23,27 @@
         repeat: 3 40; roughness: 1" position="0 .2 0" rotation="" scale="" visible="">
     </a-entity>
 
-    <a-curvedimage src="#eys1" radius="5.7" theta-length="70" height="5" rotation="0 200 0" position="0 1.7 0" scale="0.6 0.6 0.6" visible="" 
+    <a-curvedimage src="#eys" radius="5.7" theta-length="60" height="5" rotation="0 90 0" position="0 1.7 0" scale="0.6 0.6 0.6" visible="" 
+    material="" geometry="" ></a-curvedimage>
+    <a-entity position="-2.5 3.5 -1.5" text="width: 2.5; lineHeight: 50; letterSpacing: 5; color: red; 
+        value: Our founder Eu Kong, set up our first shop in 1879 in Gopeng, Perak. This shop was named ‘Yan Sang’, which literally means ‘caring for mankind’ in Chinese."
+        rotation="0 60 0" scale="" visible="">
+    </a-entity>
+    
+    <a-curvedimage src="#eys3" radius="5.7" theta-length="60" height="5" rotation="0 150 0" position="0 1.7 0" scale="0.6 0.6 0.6" visible="" 
+    material="" geometry="" ></a-curvedimage>
+    <a-entity position="0 3.5 -3.2" text="width: 2.5; lineHeight: 50; letterSpacing: 5; color: red; 
+        value: The old Eu Yan Sang store in South Bridge Road, before renovations took place in the 1970s"
+        rotation="0 00 0" scale="" visible="">
+    </a-entity>
+
+    <a-curvedimage src="#eys1" radius="5.7" theta-length="60" height="5" rotation="0 210 0" position="0 1.7 0" scale="0.6 0.6 0.6" visible="" 
     material="" geometry="" ></a-curvedimage>
     <a-entity position="2.5 3.5 -1.5" text="width: 2.5; lineHeight: 50; letterSpacing: 5; color: red; 
         value: A glimpse into its past, the old Eu Yan Sang store in South Bridge Road, before renovations took place in the 1990s"
         rotation="0 -55 0" scale="" visible="">
     </a-entity>
+
     <a-curvedimage src="#eys2" radius="5.7" theta-length="50" height="5" rotation="0 30 0" position="0 1.7 0" scale="0.6 0.6 0.6" visible="" 
     material="" geometry="" ></a-curvedimage>
     <a-entity position="2 3 2" text="width: 2.5; lineHeight: 50; letterSpacing: 5; color: red; 
@@ -35,12 +51,7 @@
         rotation="0 250 0" scale="" visible="">
     </a-entity>
 
-    <a-curvedimage src="#eys" radius="5.7" theta-length="70" height="5" rotation="0 90 0" position="0 1.7 0" scale="0.6 0.6 0.6" visible="" 
-    material="" geometry="" ></a-curvedimage>
-    <a-entity position="-2.5 3.5 -1.5" text="width: 2.5; lineHeight: 50; letterSpacing: 5; color: red; 
-        value: Our founder Eu Kong, set up our first shop in 1879 in Gopeng, Perak. This shop was named ‘Yan Sang’, which literally means ‘caring for mankind’ in Chinese."
-        rotation="0 60 0" scale="" visible="">
-    </a-entity>
+    
 
    <!-- <a-entity position="-2.5 1.5 -2" rotation="" scale="" visible="">
         <a-entity id="answer1" class="intersectable" mixin="green cube"  position="" rotation="" scale="" visible="" material="" geometry="primitive: box; depth: 0.3; height: .3; width: 0.3">
