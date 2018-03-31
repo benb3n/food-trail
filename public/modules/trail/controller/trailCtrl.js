@@ -243,7 +243,7 @@ angular.module('TrailCtrl', ['appConstants'])
                         navigator.geolocation.clearWatch(vm.map.watchPosition);
                         //console.log(result[1])
                         vm.location = {};
-                        vm.location.name = result[1].description.name
+                        vm.location.name = angular.copy(result[1].description.name)
                         vm.location.description  = result[1].description.description 
                         vm.location.img = result[1].description.img 
                         vm.location.img1 = result[1].description.img1
