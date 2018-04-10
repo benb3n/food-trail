@@ -83,31 +83,31 @@ angular.module('TrailCtrl', ['appConstants'])
                 phone: "+65 6223 5085" , img: "../assets/img/eu_yan_sang.png", img1: "../assets/img/eu_yan_sang_1.jpg", img2:"../assets/img/eu_yan_sang_2.jpg"},
 
                 {lat: 1.284836, lng: 103.844361, name: "Pek Sin Choon", address: "36 Mosque St, Singapore 059514", icon: "cafe",
-                category: "tea", hours: "10am - 10pm", 
+                category: "tea", hours: "8:30am - 18:30pm, Monday - Sunday", 
                 description: "Pek Sin Choon, one of the oldest tea merchants in Singapore and where Ah Wong frequently goes to get his supply of tea leaves to pair with his morning breakfast. Before making any purchases, smell the strong aroma from the tea leaves and find out the medicinal properties that each and every one has.", 
-                phone: "+65 66048858" , img: "../assets/img/Pek Sin Choon.png", img1: "../assets/img/pek_sin_choon_1.jpg", img2: "../assets/img/pek_sin_choon_2.jpg"},
+                phone: "+65 6323 3238" , img: "../assets/img/Pek Sin Choon.png", img1: "../assets/img/pek_sin_choon_1.jpg", img2: "../assets/img/pek_sin_choon_2.jpg"},
 
                 {lat: 1.281615, lng: 103.844961, name: "Tong Heng", address: "285 South Bridge Rd, 058833", icon: "cafe",
                 category: "patisserie", hours: "9am - 10pm", 
                 description: "Tong Heng hailed directly from the province of Guang Dong in China, a land known for its culinary flair and exquisite cuisines. The shop is most well-known for their diamond-shaped egg tart which has a “melt in the mouth” effect which lies in their crumbly-layered pastry and velvety smooth egg custard filling. Ah Wong recommends trying them while they are fresh and still warm from the oven.", 
                 phone: "+65 62233649", img: "../assets/img/tong_heng_logo.jpg", img1: "../assets/img/tong_heng_1.jpg", img2: "../assets/img/tong_heng_2.jpg"},
 
-                {lat: 1.282255, lng: 103.842576, name: "Lian He Ben Ji Claypot Rice", address: "335 Smith Street, Chinatown Complex, Singapore 050335", icon: "cafe",
+                {lat: 1.282255, lng: 103.842576, name: "Lian He Ben Ji Claypot Rice", address: "Chinatown Complex Wawker Centre @ #02-198/199 (335 Smith Street, Chinatown Complex, Singapore 050335) ", icon: "cafe",
                 category: "tea", hours: "4:30pm - 10:30pm, Closed on Thursdays", 
                 description: "One of Ah Wong guilty pleasures, the traditional method of cooking rice in a claypot (shā guo in Chinese) give a crispy crust to the rice and provides a piping hot delectable meal which warms the soul. Lian He Ben Ji Claypot Rice is one the few places that still use a charcoal fire to give their offerings a traditional method of preparation for their customers.", 
                 phone: "+65 6227 2470" , img: "../assets/img/Lian He Ben Ji Claypot Rice.png", img1: "../assets/img/lian_he_ben_ji_1.jpg" , img2: "../assets/img/lian_he_ben_ji_2.jpg"},
                 
-                {lat: 1.282574, lng: 103.8431, name: "Kent Thong Turtle Soup", address: "335 Smith Street, Chinatown Complex, Singapore 050335", icon: "cafe",
-                category: "food", hours: "10:00am - 19:00pm", 
+                {lat: 1.282574, lng: 103.8431, name: "Kent Thong Turtle Soup", address: "Chinatown Complex Wawker Centre @ #02-188(335 Smith Street, Chinatown Complex, Singapore 050335) ", icon: "cafe",
+                category: "food", hours: "10:00am - 19:00pm  Mon - Sun", 
                 description: "One of the more unique and rarer offerings where Ah Wong goes to get a nutritious bowl of hot soup rich with collagen and protein keep him strong for the day ahead. However, if you’re not as adventurous as Ah Wong, you can try out their herbal black chicken and mutton soups instead.", 
                 phone: "+65 " , img: "../assets/img/Kent Thong Turtle Soup.png", img1: "../assets/img/kent_thong_1.jpg", img2: "../assets/img/kent_thong_2.jpg"},
 
-                {lat: 1.281951, lng: 103.8439, name: "Toh Kee Roast Duck", address: "34 Sago St, Singapore 059026", icon: "cafe",
+                {lat: 1.281951, lng: 103.8439, name: "Toh Kee Roast Duck", address: "People's Park Hawker Centre @ #01-1016A  (34 Sago St, Singapore 059026)", icon: "cafe",
                 category: "food", hours: "10:30am to 7pm, Closed on mondays", 
                 description: "Roast Duck Rice, the only other bird that can compete with the chicken rice for the top spot in Singapore. At Toh Kee Roast Duck, they still use an antique brick linen oven from when they first opened to create crispy skin and tender meat offerings. Ah Wong loves to eat the Roast Duck as it’s rare to find such delectable options around.", 
                 phone: "+65 " , img: "../assets/img/Toh Kee.png", img1: "../assets/img/toh_kee_1.jpg", img2: "../assets/img/toh_kee_2.jpg"},
 
-                {lat: 1.285129, lng: 103.8426, name: "Yong Xiang Xing", address: "34 Sago St, Singapore 059026", icon: "cafe",
+                {lat: 1.285129, lng: 103.8426, name: "Yong Xiang Xing", address: "People's Park Hawker Centre @ #01-1084A (34 Sago St, Singapore 059026)", icon: "cafe",
                 category: "food", hours: "Monday-Saturday 12.00pm - 4.00pm, Sunday 1.00pm - 4.00pm", 
                 description: "Yong Tau Foo, a Hakka Chinese Cuisine which consists of a large mix of dishes to be eaten as either dry or with a soup. At Yong Xiang Xing Yong Tau Foo, it is served to you without you choosing any of the items, and the soup has a nice blend of pork and soybean stock flavours. Ah Wong frequently comes by to eat their soup during his short lunch breaks as they quickly serve their customers with delectable food.", 
                 phone: "+65 " , img: "../assets/img/Yong Xiang Xing Yong Tau Foo.png", img1: "../assets/img/Yong Xiang Xing Yong1.jpg", img2: "../assets/img/Yong Xiang Xing Yong2.png" },
@@ -156,6 +156,26 @@ angular.module('TrailCtrl', ['appConstants'])
         var code = jsQR(file, 250, 250);
 
         console.log(code)
+        if (code) {
+            if(code.data == "Tong Heng Pastries" && vm.read_once == 0){
+                drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+                drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+                drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+                drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+                outputMessage.hidden = true;
+                outputData.parentElement.hidden = false;
+                outputData.innerText = code.data;
+
+                vm.read_once++;
+                $('#info_modal').modal('close');
+                $('.location-collapse').sideNav({
+                    menuWidth: (window.innerWidth < 500) ? window.innerWidth : 300,
+                    edge: 'right', // Choose the horizontal origin
+                    closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                });
+                $('.location-collapse').sideNav('show');
+            }
+        }
     }
 
     function submitQuiz(){
@@ -239,12 +259,13 @@ angular.module('TrailCtrl', ['appConstants'])
               
                     });
 
-                    //if(result[0] < 300){
+                    if(result[0] < 100){
                         navigator.geolocation.clearWatch(vm.map.watchPosition);
                         //console.log(result[1])
                         vm.location = {};
                         vm.location.name = angular.copy(result[1].description.name)
                         vm.location.description  = result[1].description.description 
+                        vm.location.address  = result[1].description.address 
                         vm.location.img = result[1].description.img 
                         vm.location.img1 = result[1].description.img1
                         vm.location.img2 = result[1].description.img2 
@@ -323,7 +344,7 @@ angular.module('TrailCtrl', ['appConstants'])
                         $('#info_modal').modal('open');
 
                         //watchPosition = navigator.geolocation.watchPosition(success, error, option);
-                    //}
+                    }
                 }
                 function error(err) {
                     console.warn('ERROR(' + err.code + '): ' + err.message);
@@ -475,6 +496,7 @@ angular.module('TrailCtrl', ['appConstants'])
             vm.location = {};
             vm.location.name = location.name
             vm.location.description  = location.description 
+            vm.location.address  = location.address 
             vm.location.img = location.img 
             vm.location.img1 = location.img1 
             vm.location.img2 = location.img2 
